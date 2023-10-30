@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: dcdcdc; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipemanager.controllers">
    <children>
-      <AnchorPane prefHeight="768.0" prefWidth="100.0" styleClass="anchorplane" stylesheets="@darktheme.css">
+      <AnchorPane prefHeight="768.0" prefWidth="100.0" styleClass="anchorplane" stylesheets="@lighttheme.css">
          <effect>
             <DropShadow height="0.0" radius="18.25" width="75.0">
                <color>
@@ -18,12 +18,12 @@
             </DropShadow>
          </effect>
          <children>
-            <Button fx:id="RecipeListButton" onAction="#onRecipeListClick" blendMode="MULTIPLY" layoutX="25.0" layoutY="131.0" mnemonicParsing="false" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="recipelist" text="1" />
-            <Button fx:id="MakeButton" onAction="#onEditClick" blendMode="MULTIPLY" layoutX="25.0" layoutY="218.0" mnemonicParsing="false" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="edit" text="2" />
-            <Button fx:id="FavButton" onAction="#onFavClick" blendMode="MULTIPLY" layoutX="25.0" layoutY="692.0" mnemonicParsing="false" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="favlist" text="3" />
+            <Button fx:id="RecipeListButton" blendMode="MULTIPLY" layoutX="25.0" layoutY="131.0" mnemonicParsing="false" onAction="#onRecipeListClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="recipelist" stylesheets="@lighttheme.css" text="1" />
+            <Button fx:id="MakeButton" blendMode="MULTIPLY" layoutX="25.0" layoutY="218.0" mnemonicParsing="false" onAction="#onEditClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="edit" stylesheets="@lighttheme.css" text="2" />
+            <Button fx:id="FavButton" blendMode="MULTIPLY" layoutX="25.0" layoutY="692.0" mnemonicParsing="false" onAction="#onFavClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="favlist" stylesheets="@lighttheme.css" text="3" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="100.0" prefWidth="1024.0" styleClass="anchorplane" stylesheets="@darktheme.css">
+      <AnchorPane prefHeight="100.0" prefWidth="1024.0" styleClass="anchorplane" stylesheets="@lighttheme.css">
          <effect>
             <DropShadow height="75.0" radius="18.25" width="0.0">
                <color>
@@ -42,10 +42,10 @@
                   <Font name="Roboto" size="38.0" />
                </font>
             </Label>
-            <Button fx:id="CartButton" onAction="#onCartClick" blendMode="MULTIPLY" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" text="4" />
+            <Button fx:id="CartButton" blendMode="MULTIPLY" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCartClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" stylesheets="@lighttheme.css" text="4" />
          </children>
       </AnchorPane>
-      <Label fx:id="myLabel" layoutX="437.0" layoutY="362.0" text="manager" textFill="#ff9933">
+      <Label fx:id="myLabel" layoutX="127.0" layoutY="362.0" text="***" textFill="#ff9933">
          <font>
             <Font name="Roboto" size="38.0" />
          </font>
