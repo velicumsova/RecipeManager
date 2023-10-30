@@ -2,6 +2,7 @@ package com.example.recipemanager;
 
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class controllers {
@@ -9,8 +10,11 @@ public class controllers {
     @FXML
     private Label myLabel;
     @FXML
+    private Button RecipeListButton, MakeButton, FavButton, CartButton;
+    @FXML
     public void onRecipeListClick(ActionEvent event) {
         myLabel.setText("Здесь будет список рецептов");
+        //RecipeListButton.setStyle("-fx-opacity: 1;");
     }
     @FXML
     public void onEditClick(ActionEvent event) {
