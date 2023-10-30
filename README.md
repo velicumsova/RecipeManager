@@ -4,3 +4,6 @@
 Стиль приложения прописывается на CSS в файле lighttheme.css. Stylesheet указывается в [Scene Builder](https://gluonhq.com/products/scene-builder/)
 ![image](https://github.com/smoothie-ws/RecipeManager/assets/94678991/ade2aeb2-810f-4f76-8052-5a062453830f)
 ![image](https://github.com/smoothie-ws/RecipeManager/assets/94678991/24932b97-9949-4b7e-bee4-082d62cc10cf)
+При создании элементов не забывайте давать им осмысленный и понятный ID, а также название метода при взаимодействии.
+![image](https://github.com/smoothie-ws/RecipeManager/assets/94678991/d40d99a2-d3a1-4ee7-bd1e-95d39bfddcac)
+
