@@ -13,8 +13,9 @@ public class controllers {
     private Button RecipeListButton, MakeButton, FavButton, CartButton;
     @FXML
     public void onRecipeListClick(ActionEvent event) {
-        myLabel.setText("Здесь будет список рецептов");
-        //RecipeListButton.setStyle("-fx-opacity: 1;");
+
+            RecipeListButton.getStyleClass().add("pressed");
+            RecipeListButton.setStyle("-fx-opacity: 1");
     }
     @FXML
     public void onEditClick(ActionEvent event) {
