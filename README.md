@@ -7,3 +7,12 @@
 При создании элементов не забывайте давать им осмысленный и понятный ID, а также название метода при взаимодействии.
 ![image](https://github.com/smoothie-ws/RecipeManager/assets/94678991/d40d99a2-d3a1-4ee7-bd1e-95d39bfddcac)
 
+## Концепт окон приложения
+- Корзина
+  ![recipemanager4](https://github.com/smoothie-ws/RecipeManager/assets/94678991/6dfecb71-e926-41e5-a7fb-d98c274aa9f8)
+- Окно создания рецепта
+  ![recipemanager3](https://github.com/smoothie-ws/RecipeManager/assets/94678991/7e39eaa2-8a02-4a9e-b9ce-3842f27fcad9)
+- Список избранных рецептов
+  ![recipemanager2](https://github.com/smoothie-ws/RecipeManager/assets/94678991/13f68e39-a3d3-41d8-9888-68c4b3b5a795)
+- Список рецептов
+  ![recipemanager1](https://github.com/smoothie-ws/RecipeManager/assets/94678991/2798497a-9656-4405-bc62-6e4ddb52aa00)
