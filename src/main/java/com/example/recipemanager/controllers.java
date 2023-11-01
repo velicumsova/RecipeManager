@@ -15,7 +15,7 @@ public class controllers {
     public void onRecipeListClick(ActionEvent event) {
 
             RecipeListButton.getStyleClass().add("pressed");
-            RecipeListButton.setStyle("-fx-opacity: 1");
+            RecipeListButton.setStyle("-fx-opacity: 0.5");
     }
     @FXML
     public void onEditClick(ActionEvent event) {
