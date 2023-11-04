@@ -11,8 +11,10 @@
 - Корзина
   ![recipemanager4](https://github.com/smoothie-ws/RecipeManager/assets/94678991/6dfecb71-e926-41e5-a7fb-d98c274aa9f8)
 - Окно создания рецепта
-  ![recipemanager3](https://github.com/smoothie-ws/RecipeManager/assets/94678991/7e39eaa2-8a02-4a9e-b9ce-3842f27fcad9)
+  ![recipemanager3](https://github.com/smoothie-ws/RecipeManager/assets/94678991/16b1ed8a-08fe-4444-8149-09e0765dd36e)
 - Список избранных рецептов
   ![recipemanager2](https://github.com/smoothie-ws/RecipeManager/assets/94678991/13f68e39-a3d3-41d8-9888-68c4b3b5a795)
 - Список рецептов
   ![recipemanager1](https://github.com/smoothie-ws/RecipeManager/assets/94678991/2798497a-9656-4405-bc62-6e4ddb52aa00)
+- Просмотр рецепта
+  ![recipemanager5](https://github.com/smoothie-ws/RecipeManager/assets/94678991/4adbbd70-60fd-4ed2-9853-c7e7235b5900)
