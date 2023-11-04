@@ -10,15 +10,16 @@ public class controllers {
     @FXML
     private Label myLabel;
     @FXML
-    private Button RecipeListButton, MakeButton, FavButton, CartButton;
+    private Button recipeListButton, makeRecipeButton, favButton, cartButton;
     @FXML
     public void onRecipeListClick(ActionEvent event) {
 
-            RecipeListButton.getStyleClass().add("pressed");
-            RecipeListButton.setStyle("-fx-opacity: 0.5");
+            recipeListButton.getStyleClass().add("pressed");
+            recipeListButton.setStyle("-fx-opacity: 0.5");
+            myLabel.setText("Здесь будет список рецептов");
     }
     @FXML
-    public void onEditClick(ActionEvent event) {
+    public void onMakeRecipeClick(ActionEvent event) {
         myLabel.setText("Здесь будет меню для создания рецепта");
     }
     @FXML
