@@ -5,6 +5,7 @@ module com.example.recipemanager {
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
 
     opens com.example.recipemanager to javafx.fxml;
     exports com.example.recipemanager;
