@@ -43,3 +43,31 @@
 .button.cart {
     -fx-background-image: url("icons/cart.png");
 }
+
+.recipetextfield {
+    -fx-background-color: #e7e5e6;
+}
+
+.recipetextarea {
+    -fx-background-color: #e7e5e6;
+}
+
+.texttitle {
+    -fx-color: #878787;
+    -fx-font-family: Roboto;
+}
+
+.button.edit:pressed, .button.edit:focused {
+    -fx-background-image: url("icons/edit_selected.png");
+}
+
+.button.addstep {
+    -fx-background-image: url("icons/plus.png");
+}
+
+.button.createrecipe {
+    -fx-background-color: white;
+    -fx-color: #878787;
+    -fx-font-family: Roboto;
+
+}
