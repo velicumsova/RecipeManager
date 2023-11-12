@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: f4f4f4; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipemanager.controllers">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="100.0" styleClass="anchorplane" stylesheets="@lighttheme.css">
+         <effect>
+            <DropShadow height="0.0" radius="18.25" width="75.0">
+               <color>
+                  <Color opacity="0.10000000149011612" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Button fx:id="RecipeListButton" blendMode="MULTIPLY" layoutX="25.0" layoutY="131.0" mnemonicParsing="false" onAction="#onRecipeListClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="recipelist" stylesheets="@lighttheme.css" text="1" />
+            <Button fx:id="MakeButton" blendMode="MULTIPLY" layoutX="25.0" layoutY="218.0" mnemonicParsing="false" onAction="#onEditClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="edit" stylesheets="@lighttheme.css" text="2" />
+            <Button fx:id="FavButton" blendMode="MULTIPLY" layoutX="25.0" layoutY="692.0" mnemonicParsing="false" onAction="#onFavClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="favlist" stylesheets="@lighttheme.css" text="3" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="100.0" prefWidth="1024.0" styleClass="anchorplane" stylesheets="@lighttheme.css">
+         <effect>
+            <DropShadow height="75.0" radius="18.25" width="0.0">
+               <color>
+                  <Color opacity="0.10000000149011612" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="98.0" layoutY="12.0" text="Recipe" textFill="#ff9933">
+               <font>
+                  <Font name="Roboto Bold" size="65.0" />
+               </font>
+            </Label>
+            <Label layoutX="310.0" layoutY="36.0" text="manager" textFill="#ff9933">
+               <font>
+                  <Font name="Roboto" size="38.0" />
+               </font>
+            </Label>
+            <Button fx:id="CartButton" blendMode="MULTIPLY" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCartClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" stylesheets="@lighttheme.css" text="4" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="150.0" layoutY="152.0" prefHeight="42.0" prefWidth="112.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="Название" textFill="#878787">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="150.0" layoutY="227.0" prefHeight="42.0" prefWidth="158.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="Длительность" textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="151.0" layoutY="305.0" prefHeight="42.0" prefWidth="158.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="Сложность" textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="150.0" layoutY="386.0" prefHeight="42.0" prefWidth="158.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="Ингредиенты" textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField id="recipename" layoutX="304.0" layoutY="151.0" prefHeight="43.0" prefWidth="311.0" styleClass="recipetextfield">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <stylesheets>
+            <URL value="@lighttheme.css" />
+            <URL value="@lighttheme.css" />
+         </stylesheets>
+      </TextField>
+      <TextField id="recipetime" layoutX="304.0" layoutY="226.0" prefHeight="43.0" prefWidth="112.0" styleClass="recipetextfield" stylesheets="@lighttheme.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField id="recipedifficulty" layoutX="304.0" layoutY="306.0" prefHeight="43.0" prefWidth="112.0" styleClass="recipetextfield" stylesheets="@lighttheme.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField id="recipeingredients" layoutX="305.0" layoutY="379.0" prefHeight="106.0" prefWidth="660.0" styleClass="recipetextarea" stylesheets="@lighttheme.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="191.0" fitWidth="311.0" layoutX="652.0" layoutY="150.0" pickOnBounds="true" smooth="false" styleClass="recipeimage">
+         <image>
+            <Image url="@icons/donuts.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="441.0" layoutY="228.0" prefHeight="42.0" prefWidth="158.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="мин." textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="440.0" layoutY="306.0" prefHeight="42.0" prefWidth="158.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="баллов" textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="153.0" layoutY="517.0" prefHeight="42.0" prefWidth="158.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="Шаги" textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField id="recipestep" layoutX="304.0" layoutY="522.0" prefHeight="180.0" prefWidth="368.0" styleClass="recipetextarea" stylesheets="@lighttheme.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="156.0" fitWidth="270.0" layoutX="697.0" layoutY="521.0" pickOnBounds="true" smooth="false" styleClass="stepimage">
+         <image>
+            <Image url="@icons/donuts.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="308.0" layoutY="522.0" prefHeight="42.0" prefWidth="44.0" styleClass="texttitle" stylesheets="@lighttheme.css" text="1." textFill="#878787">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="MakeButton1" blendMode="MULTIPLY" layoutX="516.0" layoutY="709.0" mnemonicParsing="false" onAction="#onEditClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="addstep" stylesheets="@lighttheme.css" text="2" />
+      <Button layoutX="838.0" layoutY="702.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 7; -fx-border-width: 0.5;" styleClass="createrecipe" text="Создать" textFill="#878787" wrapText="true">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

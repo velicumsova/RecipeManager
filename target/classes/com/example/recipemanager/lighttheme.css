@@ -1,0 +1,73 @@
+.main {
+    -fx-background-color: #d8d8d8;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #dcdcdc;
+}
+
+.anchorplane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #dcdcdc;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 10;
+    -fx-border-color: transparent;
+}
+
+
+.button.recipelist {
+    -fx-background-image: url("icons/recipe_list.png");
+}
+
+.button.recipelist:pressed {
+    -fx-background-image: url("icons/recipe_list_selected.png");
+}
+
+
+.button.favlist {
+    -fx-background-image: url("icons/fav_list.png");
+}
+
+.button.edit {
+    -fx-background-image: url("icons/edit.png");
+}
+
+.button.cart {
+    -fx-background-image: url("icons/cart.png");
+}
+
+.recipetextfield {
+    -fx-background-color: #e7e5e6;
+}
+
+.recipetextarea {
+    -fx-background-color: #e7e5e6;
+}
+
+.texttitle {
+    -fx-color: #878787;
+    -fx-font-family: Roboto;
+}
+
+.button.edit:pressed, .button.edit:focused {
+    -fx-background-image: url("icons/edit_selected.png");
+}
+
+.button.addstep {
+    -fx-background-image: url("icons/plus.png");
+}
+
+.button.createrecipe {
+    -fx-background-color: white;
+    -fx-color: #878787;
+    -fx-font-family: Roboto;
+
+}
