@@ -5,6 +5,11 @@
     -fx-border-color: #dcdcdc;
 }
 
+.pagination {
+    -fx-arrows-visible: false;
+    -fx-page-information-visible: false;
+}
+
 .logo {
     -fx-background-image: url("icons/logo.png");
 }
@@ -59,6 +64,14 @@
 }
 .button.edit-active {
     -fx-background-image: url("icons/edit_selected.png");
+    -fx-opacity: 1;
+}
+
+.button.import {
+    -fx-background-image: url("icons/import.png");
+}
+.button.import-active {
+    -fx-background-image: url("icons/import_selected.png");
     -fx-opacity: 1;
 }
 
