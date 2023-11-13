@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataBaseHandler {
+public class DataBaseHandler extends Config{
     Connection dbConnection;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
