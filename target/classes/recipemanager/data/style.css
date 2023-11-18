@@ -31,6 +31,23 @@
     -fx-border-color: transparent;
 }
 
+.regularbutton {
+    -fx-background-radius: 10;
+    -fx-background-color: #ff9933;
+    -fx-text-fill: #ffffffb7;
+}
+
+.regularbutton:hover {
+    -fx-background-color: #ffbc7a;
+    -fx-text-fill: #ffffffe0;
+}
+
+.textinput {
+    -fx-background-radius: 5;
+    -fx-background-color: linear-gradient(to bottom, #b8b8b8, #c5c5c5);
+    -fx-text-fill: #4e4e4e;
+}
+
 .selection {
     -fx-background-color: transparent;
     -fx-background-size: 50px 50px;
