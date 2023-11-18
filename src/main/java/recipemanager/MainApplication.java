@@ -12,10 +12,9 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main_ui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("data/ui_form.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
         stage.setTitle("Менеджер рецептов");
-//        stage.getIcons().add(new Image("icons/logo.png"));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
