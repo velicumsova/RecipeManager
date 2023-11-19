@@ -58,19 +58,38 @@ public class Controllers {
     @FXML
     private Label recipeCookingTime;
     @FXML
+    private Label recipeBJU;
+    @FXML
     private TextArea recipeIngredients;
+    @FXML
+    private TextArea recipeSteps;
 
     public void openRecipe(Recipe recipe) {
         this.pageName.setText("Просмотр рецепта");
         this.recipeTitle.setText(recipe.getTitle());
-        this.recipeCuisine.setText("Кухня: " + recipe.getCuisine());
-        this.recipeDifficulty.setText("Сложность: " + recipe.getDifficulty());
-        this.recipeCookingTime.setText("Время: " + recipe.getCookingTime());
+        this.recipeCuisine.setText(recipe.getCuisine() + " кухня");
+        this.recipeDifficulty.setText(recipe.getDifficulty());
+        this.recipeCookingTime.setText(recipe.getCookingTime());
+
+        String ingredients = "";
+        for (String ingredient : recipe.getIngredients()) {
+            ingredients = ingredients + "· " + ingredient + "\n";
+        }
+        this.recipeIngredients.setText(ingredients);
+        this.recipeBJU.setText("~ " + String.format("%.1f", recipe.getIngredients().size() * 2.105) + "г. | " +
+                String.format("%.1f",recipe.getIngredients().size() * 1.457) + "г. | " +
+                String.format("%.1f",recipe.getIngredients().size() * 0.571) + "г.");
+
+        String steps = "";
+        for (String step : recipe.getSteps()) {
+            steps = steps + "· " + step + "\n";
+        }
+        this.recipeSteps.setText(steps);
 
         try {
-        this.recipeImage.setImage(new Image("data/icons/image_placeholder.png"));
+            this.recipeImage.setImage(new Image("https://www.koolinar.ru" + recipe.getImagePath()));
         } catch (Exception e) {
-            this.recipeImage.setImage(new Image("data/icons/image_placeholder.png"));
+            this.recipeImage.setImage(new Image(String.valueOf(MainApplication.class.getResource("data/icons/image_placeholder.png"))));
         }
 
     }
@@ -121,18 +140,8 @@ public class Controllers {
             this.linkInput.getStyleClass().add("textinput-error");
         }
         else {
-            //this.dbHandler.addRecipe(recipe);
-
+//            this.dbHandler.addRecipe(recipe);
             this.openRecipe(recipe);
-            System.out.println("Ингредиенты:");
-            for (String ingredient : recipe.getIngredients()) {
-                System.out.println("- " + ingredient);
-            }
-            System.out.println("Шаги:");
-            for (String step : recipe.getSteps()) {
-                System.out.println("- " + step);
-            }
-
             this.pagesList.getSelectionModel().select(5);
         }
     }

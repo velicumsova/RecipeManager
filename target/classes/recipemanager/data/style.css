@@ -21,6 +21,25 @@
     -fx-border-color: #dcdcdc;
 }
 
+.plane {
+    -fx-background-color: #eeeeee;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #dcdcdc;
+}
+
+.textarea {
+    -fx-background-color: #eeeeee;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #dcdcdc;
+}
+
+.image {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
 .button {
     -fx-background-color: transparent;
     -fx-background-size: 50px 50px;
@@ -34,10 +53,21 @@
 .regularbutton {
     -fx-background-radius: 10;
     -fx-background-color: #ff9933;
-    -fx-text-fill: #ffffffb7;
+    -fx-text-fill: #ffffffcb;
 }
 
 .regularbutton:hover {
+    -fx-background-color: #ffbc7a;
+    -fx-text-fill: #ffffffe0;
+}
+
+.regularbutton2 {
+    -fx-background-radius: 10;
+    -fx-background-color: #b6b6b6;
+    -fx-text-fill: #f0f0f0cb;
+}
+
+.regularbutton2:hover {
     -fx-background-color: #ffbc7a;
     -fx-text-fill: #ffffffe0;
 }
@@ -127,4 +157,20 @@
     -fx-color: #878787;
     -fx-font-family: Roboto;
 
+}
+
+.button.time {
+    -fx-background-image: url("icons/time.png");
+}
+
+.button.difficulty {
+    -fx-background-image: url("icons/difficulty.png");
+}
+
+.button.cuisine {
+    -fx-background-image: url("icons/cuisine.png");
+}
+
+.button.bju {
+    -fx-background-image: url("icons/bju.png");
 }
