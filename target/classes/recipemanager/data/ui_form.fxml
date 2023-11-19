@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: dcdcdc; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipemanager.MainControllers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: dcdcdc; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipemanager.Controllers">
   <children>
     <TabPane fx:id="pagesList" layoutX="100.0" layoutY="65.0" prefHeight="703.0" prefWidth="924.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
@@ -39,7 +39,7 @@
                <content>
                   <AnchorPane fx:id="importPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button alignment="CENTER" layoutX="362.0" layoutY="407.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" styleClass="regularbutton" stylesheets="@style.css" text="Импортировать">
+                        <Button fx:id="importButton" alignment="CENTER" layoutX="363.0" layoutY="440.0" mnemonicParsing="false" onAction="#onImportClick" prefHeight="32.0" prefWidth="200.0" styleClass="regularbutton" stylesheets="@style.css" text="Импортировать">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -47,7 +47,7 @@
                               <Font name="Roboto Medium" size="20.0" />
                            </font>
                         </Button>
-                        <TextField layoutX="212.0" layoutY="349.0" prefHeight="38.0" prefWidth="500.0" promptText="Вставьте ссылку" styleClass="textinput" stylesheets="@style.css">
+                         <TextField fx:id="linkInput" layoutX="213.0" layoutY="382.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="500.0" promptText="Вставьте ссылку" styleClass="textinput" stylesheets="@style.css">
                            <font>
                               <Font name="Roboto Medium" size="19.0" />
                            </font></TextField>
@@ -56,9 +56,14 @@
                               <Image url="@icons/koolinar_logo.png" />
                            </image>
                            <cursor>
-                              <Cursor fx:constant="HAND" />
+                              <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </ImageView>
+                        <Label fx:id="previewRecipeTitleLabel" alignment="CENTER" layoutX="213.0" layoutY="343.0" opacity="0.25" prefHeight="25.0" prefWidth="502.0" text="Импортируйте рецепт с сайта koolinar.ru" wrapText="true">
+                           <font>
+                              <Font name="Roboto" size="21.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </content>
@@ -92,19 +97,19 @@
         </DropShadow>
       </effect>
       <children>
-        <Button fx:id="recipeListButton" layoutX="25.0" layoutY="131.0" mnemonicParsing="false" onAction="#onRecipeListClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="recipelist" stylesheets="@style.css" text="1">
+        <Button fx:id="recipeListPageButton" layoutX="25.0" layoutY="131.0" mnemonicParsing="false" onAction="#onRecipeListPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="recipelist" stylesheets="@style.css" text="1">
           <cursor>
             <Cursor fx:constant="HAND" />
           </cursor></Button>
-        <Button fx:id="makeRecipeButton" layoutX="25.0" layoutY="218.0" mnemonicParsing="false" onAction="#onMakeRecipeClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="edit" stylesheets="@style.css" text="2">
+        <Button fx:id="makeRecipePageButton" layoutX="25.0" layoutY="218.0" mnemonicParsing="false" onAction="#onMakeRecipePageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="edit" stylesheets="@style.css" text="2">
           <cursor>
             <Cursor fx:constant="HAND" />
           </cursor></Button>
-        <Button fx:id="favButton" layoutX="25.0" layoutY="692.0" mnemonicParsing="false" onAction="#onFavClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="favlist" stylesheets="@style.css" text="3">
+        <Button fx:id="favPageButton" layoutX="25.0" layoutY="692.0" mnemonicParsing="false" onAction="#onFavPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="favlist" stylesheets="@style.css" text="3">
           <cursor>
             <Cursor fx:constant="HAND" />
           </cursor></Button>
-        <Button fx:id="importRecipeButton" layoutX="25.0" layoutY="305.0" mnemonicParsing="false" onAction="#onImportRecipeClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="import" stylesheets="@style.css" text="2">
+        <Button fx:id="importRecipePageButton" layoutX="25.0" layoutY="305.0" mnemonicParsing="false" onAction="#onImportRecipePageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="import" stylesheets="@style.css" text="2">
           <cursor>
             <Cursor fx:constant="HAND" />
           </cursor>
@@ -130,7 +135,7 @@
             <Font name="Roboto" size="38.0" />
           </font>
         </Label>
-        <Button fx:id="cartButton" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCartClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" stylesheets="@style.css" text="4">
+        <Button fx:id="cartPageButton" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCartPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" stylesheets="@style.css" text="4">
           <cursor>
             <Cursor fx:constant="HAND" />
           </cursor></Button>

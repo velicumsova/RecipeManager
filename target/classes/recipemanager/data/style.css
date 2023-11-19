@@ -48,6 +48,11 @@
     -fx-text-fill: #4e4e4e;
 }
 
+.textinput-error {
+    -fx-border-radius: 5;
+    -fx-border-color: #ff0000;
+}
+
 .selection {
     -fx-background-color: transparent;
     -fx-background-size: 50px 50px;
