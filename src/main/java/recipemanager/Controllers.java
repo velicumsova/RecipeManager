@@ -77,9 +77,6 @@ public class Controllers {
     }
 
     public void onLinkInput() {
-        String link = this.linkInput.getText();
-        Recipe recipe = RecipeParser.parseRecipe(link);
-        this.previewRecipeTitleLabel.setText(recipe.getTitle());
     }
 
     public void onImportClick(ActionEvent event) {
@@ -88,10 +85,14 @@ public class Controllers {
         String link = this.linkInput.getText();
         Recipe recipe = RecipeParser.parseRecipe(link);
 
+        DataBaseHandler dbHandler = new DataBaseHandler();
+
         if (recipe == null) {
             this.linkInput.getStyleClass().add("textinput-error");
         }
         else {
+            dbHandler.addRecipe(recipe);
+
             System.out.println("Название: " + recipe.getTitle());
             System.out.println("Кухня: " + recipe.getCuisine());
             System.out.println("Сложность: " + recipe.getDifficulty());

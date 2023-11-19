@@ -4,6 +4,7 @@ module recipemanager.recipemanager {
     requires java.sql;
     requires java.desktop;
     requires org.jsoup;
+    requires mysql.connector.j;
 
 
     opens recipemanager to javafx.fxml;
