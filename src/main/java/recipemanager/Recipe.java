@@ -1,8 +1,11 @@
 package recipemanager;
+import javafx.scene.image.Image;
+
 import java.util.List;
 
 public class Recipe {
     private String title;
+    private String imagePath;
     private String cuisine;
     private String difficulty;
     private String cookingTime;
@@ -11,6 +14,7 @@ public class Recipe {
 
     public Recipe() {
         this.title = "Не указано";
+        this.imagePath = "data/icons/image_placeholder.png";
         this.cuisine = "Не указано";
         this.difficulty = "Не указано";
         this.cookingTime = "Не указано";
@@ -18,6 +22,9 @@ public class Recipe {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    public void setImagePath(String image_path) {
+        this.imagePath = image_path;
     }
     public void setCuisine(String cuisine) {
         this.cuisine = cuisine;
@@ -37,6 +44,9 @@ public class Recipe {
 
     public String getTitle() {
         return this.title;
+    }
+    public String getImagePath() {
+        return this.imagePath;
     }
     public String getCuisine() {
         return this.cuisine;

@@ -2,12 +2,12 @@ package recipemanager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Controllers {
+    DataBaseHandler dbHandler = new DataBaseHandler();
     @FXML
     private TabPane pagesList;
     @FXML
@@ -41,6 +41,38 @@ public class Controllers {
         this.selectButton(this.recipeListPageButton, "recipelist-active", -35.0, 130.0);
         this.pageName.setText("Список рецептов");
         this.pagesList.getSelectionModel().select(0);
+
+    }
+    // RECIPE PAGE
+    // --------------------------
+    @FXML
+    private Button addToCartButton;
+    @FXML
+    private Label recipeTitle;
+    @FXML
+    private ImageView recipeImage;
+    @FXML
+    private Label recipeCuisine;
+    @FXML
+    private Label recipeDifficulty;
+    @FXML
+    private Label recipeCookingTime;
+    @FXML
+    private TextArea recipeIngredients;
+
+    public void openRecipe(Recipe recipe) {
+        this.pageName.setText("Просмотр рецепта");
+        this.recipeTitle.setText(recipe.getTitle());
+        this.recipeCuisine.setText("Кухня: " + recipe.getCuisine());
+        this.recipeDifficulty.setText("Сложность: " + recipe.getDifficulty());
+        this.recipeCookingTime.setText("Время: " + recipe.getCookingTime());
+
+        try {
+        this.recipeImage.setImage(new Image("data/icons/image_placeholder.png"));
+        } catch (Exception e) {
+            this.recipeImage.setImage(new Image("data/icons/image_placeholder.png"));
+        }
+
     }
 
     // FAVOURITE RECIPE LIST PAGE
@@ -85,18 +117,13 @@ public class Controllers {
         String link = this.linkInput.getText();
         Recipe recipe = RecipeParser.parseRecipe(link);
 
-        DataBaseHandler dbHandler = new DataBaseHandler();
-
         if (recipe == null) {
             this.linkInput.getStyleClass().add("textinput-error");
         }
         else {
-            dbHandler.addRecipe(recipe);
+            //this.dbHandler.addRecipe(recipe);
 
-            System.out.println("Название: " + recipe.getTitle());
-            System.out.println("Кухня: " + recipe.getCuisine());
-            System.out.println("Сложность: " + recipe.getDifficulty());
-            System.out.println("Время: " + recipe.getCookingTime());
+            this.openRecipe(recipe);
             System.out.println("Ингредиенты:");
             for (String ingredient : recipe.getIngredients()) {
                 System.out.println("- " + ingredient);
@@ -105,7 +132,8 @@ public class Controllers {
             for (String step : recipe.getSteps()) {
                 System.out.println("- " + step);
             }
-            this.previewRecipeTitleLabel.setText(recipe.getTitle());
+
+            this.pagesList.getSelectionModel().select(5);
         }
     }
 

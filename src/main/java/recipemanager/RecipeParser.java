@@ -20,6 +20,11 @@ public class RecipeParser {
             recipe.setTitle(title);
         }
 
+        String imagePath = doc.select(".b-recept__main-img").text();
+        if (!imagePath.isEmpty()) {
+            recipe.setImagePath(imagePath);
+        }
+
         String cuisine = doc.select(".p-tooltip[data-tooltip=\"Кухня\"]").text();
         if (!cuisine.isEmpty()) {
             recipe.setCuisine(cuisine);
