@@ -140,7 +140,7 @@ public class Controllers {
             this.linkInput.getStyleClass().add("textinput-error");
         }
         else {
-//            this.dbHandler.addRecipe(recipe);
+            this.dbHandler.addRecipe(recipe);
             this.openRecipe(recipe);
             this.pagesList.getSelectionModel().select(5);
         }
