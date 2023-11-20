@@ -1,9 +1,9 @@
 package recipemanager;
-import javafx.scene.image.Image;
-
 import java.util.List;
 
 public class Recipe {
+
+    private boolean isFavourite;
     private String title;
     private String imagePath;
     private String cuisine;
@@ -11,8 +11,10 @@ public class Recipe {
     private String cookingTime;
     private List<String> ingredients;
     private List<String> steps;
+    private List<String> stepImagePaths;
 
     public Recipe() {
+        this.isFavourite = false;
         this.title = "Не указано";
         this.imagePath = "data/icons/image_placeholder.png";
         this.cuisine = "Не указано";
@@ -20,6 +22,11 @@ public class Recipe {
         this.cookingTime = "Не указано";
     }
 
+
+    // SETTERS
+    public void setFavourite(boolean isFavourite) {
+        this.isFavourite = isFavourite;
+    }
     public void setTitle(String title) {
         this.title = title;
     }
@@ -41,7 +48,15 @@ public class Recipe {
     public void setSteps(List<String> steps) {
         this.steps = steps;
     }
+    public void setStepImagePaths(List<String> stepImagePaths) {
+        this.stepImagePaths = stepImagePaths;
+    }
 
+
+    // GETTERS
+    public boolean getFavourite() {
+        return this.isFavourite;
+    }
     public String getTitle() {
         return this.title;
     }
@@ -62,5 +77,8 @@ public class Recipe {
     }
     public List<String> getSteps() {
         return this.steps;
+    }
+    public List<String> getStepImagePaths() {
+        return this.stepImagePaths;
     }
 }
