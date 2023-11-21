@@ -106,11 +106,11 @@
                <content>
                   <AnchorPane fx:id="cartPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-10.0" prefHeight="693.0" prefWidth="924.0" vmax="2.0">
+                        <ScrollPane fx:id="recipeMainScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="-10.0" prefHeight="693.0" prefWidth="924.0" vmax="2.0" vvalue="1.2">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1595.0" prefWidth="924.0">
+                            <AnchorPane fx:id="recipeMainPane" minHeight="0.0" minWidth="0.0" prefHeight="1164.0" prefWidth="924.0">
                                  <children>
-                                    <TextArea fx:id="recipeIngredients" editable="false" layoutX="25.0" layoutY="503.0" prefHeight="295.0" prefWidth="876.0" styleClass="textarea" text="- Список ингредиентов&#10;- ...">
+                                    <TextArea fx:id="recipeIngredients" editable="false" layoutX="17.0" layoutY="503.0" prefHeight="295.0" prefWidth="875.0" styleClass="textarea" text="- Список ингредиентов&#10;- ..." wrapText="true">
                                        <font>
                                           <Font name="Roboto Medium" size="20.0" />
                                        </font>
@@ -121,12 +121,12 @@
                                              </color>
                                           </DropShadow>
                                        </effect></TextArea>
-                                    <Label layoutX="25.0" layoutY="465.0" prefHeight="29.0" prefWidth="867.0" text="Ингредиенты" textFill="#a8a8a8">
+                                    <Label layoutX="17.0" layoutY="465.0" prefHeight="29.0" prefWidth="867.0" text="Ингредиенты" textFill="#a8a8a8">
                                        <font>
                                           <Font name="Roboto" size="24.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane layoutX="25.0" layoutY="135.0" prefHeight="286.0" prefWidth="875.0" styleClass="plane">
+                                    <AnchorPane layoutX="17.0" layoutY="135.0" prefHeight="286.0" prefWidth="875.0" styleClass="plane">
                                        <children>
                                           <Label fx:id="recipeCuisine" layoutX="59.0" layoutY="69.0" prefHeight="31.0" prefWidth="376.0" text="Кухня" textFill="#656565">
                                              <font>
@@ -215,7 +215,7 @@
                                           </DropShadow>
                                        </effect>
                                     </AnchorPane>
-                                    <Button fx:id="addToCartButton" alignment="CENTER" layoutX="730.0" layoutY="744.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" styleClass="regularbutton2" stylesheets="@style.css" text="В корзину">
+                                    <Button fx:id="addToCartButton" alignment="CENTER" layoutX="740.0" layoutY="456.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="150.0" styleClass="regularbutton2" stylesheets="@style.css" text="В корзину">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
@@ -223,21 +223,17 @@
                                           <Font name="Roboto Medium" size="20.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="22.0" layoutY="849.0" prefHeight="29.0" prefWidth="864.0" text="Пошаговый рецепт приготовления" textFill="#a8a8a8">
+                                    <Label layoutX="14.0" layoutY="849.0" prefHeight="29.0" prefWidth="864.0" text="Пошаговый рецепт приготовления" textFill="#a8a8a8">
                                        <font>
                                           <Font name="Roboto" size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="recipeSteps" editable="false" layoutX="21.0" layoutY="887.0" prefHeight="195.0" prefWidth="876.0" styleClass="textarea" text="- Список шагов&#10;- ...">
-                                       <font>
-                                          <Font name="Roboto Medium" size="20.0" />
-                                       </font>
-                                    </TextArea>
-                                    <Label fx:id="recipeTitle" alignment="CENTER" layoutX="38.0" layoutY="29.0" prefHeight="90.0" prefWidth="842.0" text="Название рецепта" textAlignment="CENTER" textFill="#5b5b5b" wrapText="true">
+                                    <Label fx:id="recipeTitle" alignment="CENTER" layoutX="30.0" layoutY="29.0" prefHeight="90.0" prefWidth="842.0" text="Название рецепта" textAlignment="CENTER" textFill="#5b5b5b" wrapText="true">
                                        <font>
                                           <Font name="Roboto Black" size="32.0" />
                                        </font>
                                     </Label>
+                                    <AnchorPane fx:id="recipeStepsPane" layoutX="17.0" layoutY="884.0" prefHeight="266.0" prefWidth="875.0" styleClass="plane" />
                                  </children>
                               </AnchorPane>
                           </content>

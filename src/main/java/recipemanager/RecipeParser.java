@@ -4,6 +4,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecipeParser {
 
     public static Recipe parseRecipe(String link) {
@@ -55,18 +58,26 @@ public class RecipeParser {
             recipe.setIngredients(ingredients.eachText());
         }
 
-        Elements steps = doc.select(".instruction");
+        Elements steps = doc.select(".b-step");
         if (!steps.isEmpty()) {
             recipe.setSteps(steps.eachText());
+        } else {
+            steps = doc.select(".instruction");
+            if (!steps.isEmpty()) {
+                recipe.setSteps(steps.eachText());
+            }
         }
 
-        Elements stepImages = doc.select(".instruction");
-        if (!steps.isEmpty()) {
-            recipe.setSteps(steps.eachText());
+        Elements imageElements = doc.select(".b-step__img img");
+        List<String> imageURLS = new ArrayList<>();
+
+        for (Element imageElement : imageElements) {
+            String imageURL = imageElement.attr("src");
+            imageURLS.add("https://www.koolinar.ru" + imageURL);
         }
+        recipe.setStepImagePaths(imageURLS);
 
         return recipe;
-
     }
 }
 
