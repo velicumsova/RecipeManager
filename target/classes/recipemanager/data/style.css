@@ -220,3 +220,10 @@
 .button.bju {
     -fx-background-image: url("icons/bju.png");
 }
+
+.button.favbutton {
+    -fx-background-image: url("icons/favbutton.png");
+}
+.button.favbutton-active {
+    -fx-background-image: url("icons/favbutton_active.png");
+}

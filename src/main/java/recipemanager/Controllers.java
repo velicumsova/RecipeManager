@@ -79,9 +79,9 @@ public class Controllers {
             ingredients = ingredients + "· " + ingredient + "\n";
         }
         this.recipeIngredients.setText(ingredients);
-        this.recipeBJU.setText("~ " + String.format("%.1f", recipe.getIngredients().size() * 2.105) + "г. | " +
-                String.format("%.1f",recipe.getIngredients().size() * 1.457) + "г. | " +
-                String.format("%.1f",recipe.getIngredients().size() * 0.571) + "г.");
+        this.recipeBJU.setText("~ " + String.format("%.1f", recipe.getIngredients().size() * 4.105) + "г. | " +
+                String.format("%.1f",recipe.getIngredients().size() * 2.457) + "г. | " +
+                String.format("%.1f",recipe.getIngredients().size() * 1.571) + "г.");
 
         String steps = "";
         for (String step : recipe.getSteps()) {
@@ -128,6 +128,10 @@ public class Controllers {
         this.selectButton(this.importRecipePageButton, "import-active", -35.0, 304.0);
         this.pageName.setText("Импорт рецепта");
         this.pagesList.getSelectionModel().select(2);
+
+        this.linkInput.getStyleClass().remove("textinput-error");
+        this.linkInput.getStyleClass().add("textinput");
+        this.linkInput.clear();
     }
 
     public void onLinkInput() {
