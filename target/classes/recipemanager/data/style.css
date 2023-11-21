@@ -171,6 +171,10 @@
     -fx-background-image: url("icons/cuisine.png");
 }
 
+.button.category {
+    -fx-background-image: url("icons/category.png");
+}
+
 .button.bju {
     -fx-background-image: url("icons/bju.png");
 }

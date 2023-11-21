@@ -50,6 +50,8 @@ public class Controllers {
     @FXML
     private Label recipeTitle;
     @FXML
+    private Label recipeCategory;
+    @FXML
     private ImageView recipeImage;
     @FXML
     private Label recipeCuisine;
@@ -67,6 +69,7 @@ public class Controllers {
     public void openRecipe(Recipe recipe) {
         this.pageName.setText("Просмотр рецепта");
         this.recipeTitle.setText(recipe.getTitle());
+        this.recipeCategory.setText(recipe.getCategory());
         this.recipeCuisine.setText(recipe.getCuisine() + " кухня");
         this.recipeDifficulty.setText(recipe.getDifficulty());
         this.recipeCookingTime.setText(recipe.getCookingTime());
@@ -140,7 +143,7 @@ public class Controllers {
             this.linkInput.getStyleClass().add("textinput-error");
         }
         else {
-            DataBaseHandler.addRecipe(recipe);
+            // DataBaseHandler.addRecipe(recipe);
             this.openRecipe(recipe);
             this.pagesList.getSelectionModel().select(5);
         }

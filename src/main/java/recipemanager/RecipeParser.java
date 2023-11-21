@@ -1,6 +1,7 @@
 package recipemanager;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class RecipeParser {
@@ -20,10 +21,13 @@ public class RecipeParser {
             recipe.setTitle(title);
         }
 
-        String category = doc.select(".itemprop").text();
-        if (!category.isEmpty()) {
-            System.out.println(category);
-            recipe.setCategory(category);
+        Elements listItems = doc.select("li[itemprop='itemListElement'] a span");
+        if (listItems.size() >= 2) {
+            Element listItem = listItems.get(2);
+            String category = listItem.text();
+            if (!category.isEmpty()) {
+                recipe.setCategory(category);
+            }
         }
 
         String imageUrl = doc.select(".b-recept__main-img img").attr("src");
@@ -61,14 +65,8 @@ public class RecipeParser {
             recipe.setSteps(steps.eachText());
         }
 
-
         return recipe;
 
     }
-
-    public static void main (String[] args) {
-        parseRecipe("https://www.koolinar.ru/recipe/view/109844");
-    }
-
 }
 
