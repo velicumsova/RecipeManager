@@ -5,6 +5,7 @@ public class Recipe {
 
     private boolean isFavourite;
     private String title;
+    private String category;
     private String imagePath;
     private String cuisine;
     private String difficulty;
@@ -16,6 +17,7 @@ public class Recipe {
     public Recipe() {
         this.isFavourite = false;
         this.title = "Не указано";
+        this.category = "Не указано";
         this.imagePath = "data/icons/image_placeholder.png";
         this.cuisine = "Не указано";
         this.difficulty = "Не указано";
@@ -29,6 +31,9 @@ public class Recipe {
     }
     public void setTitle(String title) {
         this.title = title;
+    }
+    public void setCategory(String category) {
+        this.category = category;
     }
     public void setImagePath(String image_path) {
         this.imagePath = image_path;
@@ -59,6 +64,9 @@ public class Recipe {
     }
     public String getTitle() {
         return this.title;
+    }
+    public String getCategory() {
+        return this.category;
     }
     public String getImagePath() {
         return this.imagePath;

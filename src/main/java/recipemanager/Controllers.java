@@ -87,7 +87,7 @@ public class Controllers {
         this.recipeSteps.setText(steps);
 
         try {
-            this.recipeImage.setImage(new Image("https://www.koolinar.ru" + recipe.getImagePath()));
+            this.recipeImage.setImage(new Image(recipe.getImagePath()));
         } catch (Exception e) {
             this.recipeImage.setImage(new Image(String.valueOf(MainApplication.class.getResource("data/icons/image_placeholder.png"))));
         }
