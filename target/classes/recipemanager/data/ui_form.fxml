@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: dcdcdc; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipemanager.Controllers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: dcdcdc; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipemanager.Controllers">
   <children>
     <TabPane fx:id="pagesList" layoutX="100.0" layoutY="69.0" prefHeight="699.0" prefWidth="924.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
@@ -105,7 +98,7 @@
                <content>
                   <AnchorPane fx:id="cartPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane fx:id="recipeMainScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="-10.0" prefHeight="693.0" prefWidth="924.0" vmax="2.0" vvalue="1.2">
+                        <ScrollPane fx:id="recipeMainScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="-10.0" prefHeight="693.0" prefWidth="924.0" vmax="2.0">
                           <content>
                             <AnchorPane fx:id="recipeMainPane" minHeight="0.0" minWidth="0.0" prefHeight="1164.0" prefWidth="924.0">
                                  <children>
@@ -182,7 +175,7 @@
                                              </effect>
                                           </ImageView>
                                           <Line endX="307.0" layoutX="132.0" layoutY="124.0" startX="-100.0" stroke="#d3d3d3" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
-                                          <Button fx:id="favButton" layoutX="821.0" layoutY="16.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
+                                          <Button fx:id="favButton" layoutX="429.0" layoutY="19.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -211,7 +204,7 @@
                                           <Font name="Roboto Medium" size="20.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="17.0" layoutY="566.0" prefHeight="29.0" prefWidth="864.0" text="Пошаговый рецепт приготовления" textFill="#a8a8a8">
+                                    <Label fx:id="recipeStepsLabel" layoutX="17.0" layoutY="566.0" prefHeight="29.0" prefWidth="864.0" text="Пошаговый рецепт приготовления" textFill="#a8a8a8">
                                        <font>
                                           <Font name="Roboto" size="24.0" />
                                        </font>

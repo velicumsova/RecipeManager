@@ -72,6 +72,8 @@ public class Controllers {
     @FXML
     private AnchorPane recipeIngredientsPane;
     @FXML
+    private Label recipeStepsLabel;
+    @FXML
     private AnchorPane recipeStepsPane;
 
     public void openRecipe(Recipe recipe) {
@@ -92,7 +94,7 @@ public class Controllers {
 
         // Отображение ингредиентов
         recipeIngredientsPane.getChildren().clear();
-        double yPosition = 25;
+        double yPositionIngredients = 25;
         for (String ingredient : recipe.getIngredients()) {
             Label ingredientLabel = new Label("· " + ingredient);
             ingredientLabel.setStyle("{" +
@@ -105,17 +107,17 @@ public class Controllers {
                     "}");
 
             HBox stepBox = new HBox(10, ingredientLabel);
-            AnchorPane.setTopAnchor(stepBox, yPosition);
+            AnchorPane.setTopAnchor(stepBox, yPositionIngredients);
             AnchorPane.setLeftAnchor(stepBox, 25.0);
             recipeIngredientsPane.getChildren().add(stepBox);
-            yPosition += 50;
+            yPositionIngredients += 50;
         }
 
-        recipeIngredientsPane.setMinHeight(yPosition);
-        recipeIngredientsPane.setPrefHeight(yPosition);
+        recipeIngredientsPane.setMinHeight(yPositionIngredients);
+        recipeIngredientsPane.setPrefHeight(yPositionIngredients);
 
-        recipeMainPane.setMinHeight(yPosition + 650);
-        recipeMainPane.setPrefHeight(yPosition + 650);
+        recipeStepsLabel.setLayoutY(yPositionIngredients + 535);
+        recipeStepsPane.setLayoutY(yPositionIngredients + 575);
 
         this.recipeBJU.setText("~ " + String.format("%.1f", recipe.getIngredients().size() * 4.105) + "г. | " +
                 String.format("%.1f", recipe.getIngredients().size() * 2.457) + "г. | " +
@@ -123,7 +125,7 @@ public class Controllers {
 
         // Отображение каждого шага
         recipeStepsPane.getChildren().clear();
-        yPosition = 25;
+        double yPositionSteps = 25;
         if (!recipe.getStepImagePaths().isEmpty()) {
             for (String url : recipe.getStepImagePaths()) {
                 ImageView imageView;
@@ -144,13 +146,13 @@ public class Controllers {
                         "}");
 
                 HBox stepBox = new HBox(10, imageView, stepLabel);
-                AnchorPane.setTopAnchor(stepBox, yPosition);
+                AnchorPane.setTopAnchor(stepBox, yPositionSteps);
                 AnchorPane.setLeftAnchor(stepBox, 25.0);
                 recipeStepsPane.getChildren().add(stepBox);
                 if (stepLabel.getText().length() / 38 > 4) {
-                    yPosition += 25 + imageView.getBoundsInLocal().getHeight() + stepLabel.getText().length() / 2.75;
+                    yPositionSteps += 25 + imageView.getBoundsInLocal().getHeight() + stepLabel.getText().length() / 2.75;
                 } else {
-                    yPosition += 25 + imageView.getBoundsInLocal().getHeight();
+                    yPositionSteps += 25 + imageView.getBoundsInLocal().getHeight();
                 }
             }
         } else {
@@ -166,17 +168,17 @@ public class Controllers {
                         "}");
 
                 HBox stepBox = new HBox(10, stepLabel);
-                AnchorPane.setTopAnchor(stepBox, yPosition);
+                AnchorPane.setTopAnchor(stepBox, yPositionSteps);
                 AnchorPane.setLeftAnchor(stepBox, 25.0);
                 recipeStepsPane.getChildren().add(stepBox);
-                yPosition += 50 + (stepLabel.getText().length() - 1) / 2.0;
+                yPositionSteps += 50 + (stepLabel.getText().length() - 1) / 2.0;
             }
         }
-        recipeStepsPane.setMinHeight(yPosition);
-        recipeStepsPane.setPrefHeight(yPosition);
+        recipeStepsPane.setMinHeight(yPositionSteps);
+        recipeStepsPane.setPrefHeight(yPositionSteps);
 
-        recipeMainPane.setMinHeight(yPosition + 925);
-        recipeMainPane.setPrefHeight(yPosition + 925);
+        recipeMainPane.setMinHeight(yPositionSteps + yPositionIngredients + 600);
+        recipeMainPane.setPrefHeight(yPositionSteps + yPositionIngredients + 600);
     }
 
 
