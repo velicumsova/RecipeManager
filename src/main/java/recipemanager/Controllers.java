@@ -66,18 +66,16 @@ public class Controllers {
     @FXML
     private Label recipeBJU;
     @FXML
-    private TextArea recipeIngredients;
-    @FXML
     private ScrollPane recipeMainScrollPane;
     @FXML
     private AnchorPane recipeMainPane;
+    @FXML
+    private AnchorPane recipeIngredientsPane;
     @FXML
     private AnchorPane recipeStepsPane;
 
     public void openRecipe(Recipe recipe) {
         this.pageName.setText("Просмотр рецепта");
-        System.out.println(recipe.getSteps());
-        System.out.println(recipe.getStepImagePaths());
 
         try {
             this.recipeImage.setImage(new Image(recipe.getImagePath()));
@@ -92,17 +90,40 @@ public class Controllers {
         this.recipeDifficulty.setText(recipe.getDifficulty());
         this.recipeCookingTime.setText(recipe.getCookingTime());
 
-        String ingredients = "";
+        // Отображение ингредиентов
+        recipeIngredientsPane.getChildren().clear();
+        double yPosition = 25;
         for (String ingredient : recipe.getIngredients()) {
-            ingredients = ingredients + "· " + ingredient + "\n";
+            Label ingredientLabel = new Label("· " + ingredient);
+            ingredientLabel.setStyle("{" +
+                    "    -fx-font-family: 'Roboto Medium';" +
+                    "    -fx-font-size: 20px;" +
+                    "    -fx-text-fill: #656565;" +
+                    "    -fx-max-width: 825;" +
+                    "    -fx-ellipses-string: \"...\";" +
+                    "    -fx-wrap-text: true;" +
+                    "}");
+
+            HBox stepBox = new HBox(10, ingredientLabel);
+            AnchorPane.setTopAnchor(stepBox, yPosition);
+            AnchorPane.setLeftAnchor(stepBox, 25.0);
+            recipeIngredientsPane.getChildren().add(stepBox);
+            yPosition += 50;
         }
-        this.recipeIngredients.setText(ingredients);
+
+        recipeIngredientsPane.setMinHeight(yPosition);
+        recipeIngredientsPane.setPrefHeight(yPosition);
+
+        recipeMainPane.setMinHeight(yPosition + 650);
+        recipeMainPane.setPrefHeight(yPosition + 650);
+
         this.recipeBJU.setText("~ " + String.format("%.1f", recipe.getIngredients().size() * 4.105) + "г. | " +
                 String.format("%.1f", recipe.getIngredients().size() * 2.457) + "г. | " +
                 String.format("%.1f", recipe.getIngredients().size() * 1.571) + "г.");
 
         // Отображение каждого шага
-        double yPosition = 25;
+        recipeStepsPane.getChildren().clear();
+        yPosition = 25;
         if (!recipe.getStepImagePaths().isEmpty()) {
             for (String url : recipe.getStepImagePaths()) {
                 ImageView imageView;
@@ -112,7 +133,7 @@ public class Controllers {
                 imageView.setLayoutX(10);
                 imageView.setPreserveRatio(true);
 
-                Label stepLabel = new Label(recipe.getSteps().get(recipe.getStepImagePaths().indexOf(url)));
+                Label stepLabel = new Label("· " + recipe.getSteps().get(recipe.getStepImagePaths().indexOf(url)));
                 stepLabel.setStyle("{" +
                         "    -fx-font-family: 'Roboto Medium';" +
                         "    -fx-font-size: 20px;" +
@@ -132,14 +153,9 @@ public class Controllers {
                     yPosition += 25 + imageView.getBoundsInLocal().getHeight();
                 }
             }
-            recipeStepsPane.setMinHeight(yPosition);
-            recipeStepsPane.setPrefHeight(yPosition);
-
-            recipeMainPane.setMinHeight(yPosition + 925);
-            recipeMainPane.setPrefHeight(yPosition + 925);
         } else {
             for (String step : recipe.getSteps()) {
-                Label stepLabel = new Label(step);
+                Label stepLabel = new Label("· " + step);
                 stepLabel.setStyle("{" +
                         "    -fx-font-family: 'Roboto Medium';" +
                         "    -fx-font-size: 20px;" +
@@ -153,18 +169,14 @@ public class Controllers {
                 AnchorPane.setTopAnchor(stepBox, yPosition);
                 AnchorPane.setLeftAnchor(stepBox, 25.0);
                 recipeStepsPane.getChildren().add(stepBox);
-                if (stepLabel.getText().length() / 38 > 4) {
-                    yPosition += 75 + stepLabel.getText().length() / 2.75;
-                } else {
-                    yPosition += 75;
-                }
+                yPosition += 50 + (stepLabel.getText().length() - 1) / 2.0;
             }
-            recipeStepsPane.setMinHeight(yPosition);
-            recipeStepsPane.setPrefHeight(yPosition);
-
-            recipeMainPane.setMinHeight(yPosition + 925);
-            recipeMainPane.setPrefHeight(yPosition + 925);
         }
+        recipeStepsPane.setMinHeight(yPosition);
+        recipeStepsPane.setPrefHeight(yPosition);
+
+        recipeMainPane.setMinHeight(yPosition + 925);
+        recipeMainPane.setPrefHeight(yPosition + 925);
     }
 
 

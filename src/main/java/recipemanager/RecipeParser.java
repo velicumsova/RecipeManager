@@ -71,6 +71,10 @@ public class RecipeParser {
         Elements imageElements = doc.select(".b-step__img img");
         List<String> imageURLS = new ArrayList<>();
 
+        if (imageElements.isEmpty()) {
+            imageElements = doc.select(".b-recept__photos img");
+        }
+
         for (Element imageElement : imageElements) {
             String imageURL = imageElement.attr("src");
             imageURLS.add("https://www.koolinar.ru" + imageURL);
