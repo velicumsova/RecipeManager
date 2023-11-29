@@ -1,4 +1,5 @@
 package recipemanager;
+import java.util.Collections;
 import java.util.List;
 
 public class Recipe {
@@ -10,9 +11,8 @@ public class Recipe {
     private String cuisine;
     private String difficulty;
     private String cookingTime;
-    private List<String> ingredients;
-    private List<String> steps;
-    private List<String> stepImagePaths;
+    private RecipeIngredients ingredients;
+    private RecipeSteps steps;
 
     public Recipe() {
         this.isFavourite = false;
@@ -22,6 +22,9 @@ public class Recipe {
         this.cuisine = "Не указано";
         this.difficulty = "Не указано";
         this.cookingTime = "Не указано";
+        this.ingredients.setIngredients(Collections.singletonList(("Ингредиенты не указаны")));
+        this.steps.setSteps(Collections.singletonList(("Шаги не указаны")));
+        this.steps.setStepImagePaths(Collections.singletonList(("Изображения шагов не указаны")));
     }
 
 
@@ -48,13 +51,13 @@ public class Recipe {
         this.cookingTime = cookingTime;
     }
     public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
+        this.ingredients.setIngredients(ingredients);
     }
     public void setSteps(List<String> steps) {
-        this.steps = steps;
+        this.steps.setSteps(steps);
     }
     public void setStepImagePaths(List<String> stepImagePaths) {
-        this.stepImagePaths = stepImagePaths;
+        this.steps.setStepImagePaths(stepImagePaths);
     }
 
 
@@ -81,12 +84,12 @@ public class Recipe {
         return this.cookingTime;
     }
     public List<String> getIngredients() {
-        return this.ingredients;
+        return this.ingredients.getIngredients();
     }
     public List<String> getSteps() {
-        return this.steps;
+        return this.steps.getSteps();
     }
     public List<String> getStepImagePaths() {
-        return this.stepImagePaths;
+        return this.steps.getStepImagePaths();
     }
 }
