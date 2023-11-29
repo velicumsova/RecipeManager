@@ -9,6 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.awt.event.MouseEvent;
+import java.io.File;
+
 
 public class Controllers {
     DataBaseHandler dbHandler = new DataBaseHandler();
@@ -194,11 +200,113 @@ public class Controllers {
 
     // MAKE NEW RECIPE PAGE
     // --------------------------
+
+    @FXML
+    public AnchorPane stepAnchorPane;
+
+    @FXML
+    public VBox recipeElementsVBox;
+
+    @FXML
+    public AnchorPane createRecipeAnchorPane;
+
+    @FXML
+    public ImageView recipeImage1;
+
+
     public void onMakeRecipePageClick(ActionEvent event) {
         this.selectButton(this.makeRecipePageButton, "edit-active", -35.0, 217.0);
         this.pageName.setText("Создание рецепта");
-        this.pagesList.getSelectionModel().select(1);
+        this.pagesList.getSelectionModel().select(1); // Предполагается, что здесь осуществляется переключение на страницу для создания рецепта
+
+
+        recipeImage1.setOnMouseClicked(mouseEvent -> {
+            FileChooser fileChooser = new FileChooser();
+
+// Добавляем фильтры для файлов изображений
+            FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg");
+            fileChooser.getExtensionFilters().addAll(extFilterPNG, extFilterJPG);
+
+            Stage stage = (Stage) recipeElementsVBox.getScene().getWindow();
+            File selectedFile = fileChooser.showOpenDialog(stage);
+
+            if (selectedFile != null) {
+                try {
+                    Image image = new Image(selectedFile.toURI().toString());
+                    recipeImage1.setImage(image);
+                } catch (Exception e) {
+                    e.printStackTrace(); // Обработка ошибок загрузки изображения
+                }
+            }
+
+        });
     }
+
+
+    public void createNewStep(ActionEvent event) {
+        // Создание текстового поля для шага с применением стиля
+        TextArea stepTextArea = new TextArea();
+        stepTextArea.setStyle("-fx-font-family: 'Roboto Medium';" +
+                "-fx-font-size: 20px;" +
+                "-fx-text-fill: #656565;" +
+                "-fx-max-width: 825;" +
+                "-fx-ellipses-string: \"...\";" +
+                "-fx-wrap-text: true;");
+        stepTextArea.setPromptText("Введите шаг");
+        stepTextArea.setPrefSize(500, 250); // Настройка размеров текстового поля
+
+        // Создание кнопки для загрузки изображения
+        Button uploadImageButton = new Button("Загрузить изображение");
+        ImageView imageView = new ImageView(); // Изначально пустое изображение
+        imageView.setFitWidth(250); // Установка ширины изображения
+        imageView.setFitHeight(170);
+
+        // Установка изображения-заглушки
+        Image placeholderImage = new Image(getClass().getResourceAsStream("/recipemanager/data/icons/image_placeholder.png"));
+        imageView.setImage(placeholderImage);
+
+        // Обработчик нажатия на изображение для загрузки нового изображения
+        imageView.setOnMouseClicked(mouseEvent -> {
+            FileChooser fileChooser = new FileChooser();
+
+// Добавляем фильтры для файлов изображений
+            FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg");
+            fileChooser.getExtensionFilters().addAll(extFilterPNG, extFilterJPG);
+
+            Stage stage = (Stage) recipeElementsVBox.getScene().getWindow();
+            File selectedFile = fileChooser.showOpenDialog(stage);
+
+            if (selectedFile != null) {
+                try {
+                    Image image = new Image(selectedFile.toURI().toString());
+                    imageView.setImage(image);
+                } catch (Exception e) {
+                    e.printStackTrace(); // Обработка ошибок загрузки изображения
+                }
+            }
+
+        });
+
+        // Создание контейнера для текстового поля и изображения
+        VBox textAndButtonBox = new VBox(); // VBox для вертикального расположения элементов
+        textAndButtonBox.getChildren().addAll(stepTextArea, uploadImageButton); // Добавление элементов в VBox
+
+        // Создание контейнера для текстового поля, кнопки и изображения
+        HBox stepBox = new HBox(20); // HBox для горизонтального расположения элементов
+        stepBox.getChildren().addAll(textAndButtonBox, imageView); // Добавление VBox и ImageView в HBox
+
+        // Добавление созданного контейнера в VBox
+        recipeElementsVBox.getChildren().add(stepBox);
+
+        createRecipeAnchorPane.setPrefHeight(createRecipeAnchorPane.getPrefHeight() + stepBox.getHeight() + 200); // Примерный отступ между элементами
+    }
+
+
+
+
+
 
     // RECIPE IMPORT PAGE
     // --------------------------
