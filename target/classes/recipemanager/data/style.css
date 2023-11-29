@@ -227,3 +227,7 @@
 .button.favbutton-active {
     -fx-background-image: url("icons/favbutton_active.png");
 }
+
+.button.addbutton {
+    -fx-background-image: url("icons/plus.png");
+}
