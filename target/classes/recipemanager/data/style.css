@@ -231,3 +231,10 @@
 .button.addbutton {
     -fx-background-image: url("icons/plus.png");
 }
+.button.addbutton:hover {
+    -fx-background-image: url("icons/plus_hover.png");
+}
+
+.button.addbutton {
+    -fx-background-image: url("icons/plus.png");
+}
