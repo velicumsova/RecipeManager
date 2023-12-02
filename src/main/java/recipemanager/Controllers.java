@@ -302,6 +302,7 @@ public class Controllers {
         recipeElementsVBox.getChildren().add(stepBox);
 
         createRecipeAnchorPane.setPrefHeight(createRecipeAnchorPane.getPrefHeight() + stepBox.getHeight() + 200); // Примерный отступ между элементами
+
     }
 
 

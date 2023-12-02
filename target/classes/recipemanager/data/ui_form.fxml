@@ -22,139 +22,113 @@
             </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Make Recipe">
-          <content>
-            <AnchorPane fx:id="makerecipePage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="693.0" prefWidth="924.0" vmax="2.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1595.0" prefWidth="924.0" styleClass="recipestep">
-                                 <children>
-                                    <TextField fx:id="linkInput1" alignment="TOP_LEFT" layoutX="221.0" layoutY="58.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="382.0" styleClass="textinput" stylesheets="@style.css">
-                                       <font>
-                                          <Font name="Roboto Medium" size="19.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label fx:id="previewRecipeTitleLabel1" alignment="CENTER" layoutX="90.0" layoutY="64.0" opacity="0.25" prefHeight="26.0" prefWidth="114.0" text="Название" wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="linkInput11" alignment="TOP_LEFT" layoutX="220.0" layoutY="119.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="90.0" styleClass="textinput" stylesheets="@style.css">
-                                       <font>
-                                          <Font name="Roboto Medium" size="19.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label fx:id="previewRecipeTitleLabel11" alignment="CENTER" layoutX="55.0" layoutY="125.0" opacity="0.25" prefHeight="26.0" prefWidth="150.0" text="Длительность" wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="previewRecipeTitleLabel111" alignment="CENTER" layoutX="326.0" layoutY="125.0" opacity="0.25" prefHeight="26.0" prefWidth="60.0" text="мин." wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="linkInput111" alignment="TOP_LEFT" layoutX="220.0" layoutY="178.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="90.0" styleClass="textinput" stylesheets="@style.css">
-                                       <font>
-                                          <Font name="Roboto Medium" size="19.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label fx:id="previewRecipeTitleLabel112" alignment="CENTER" layoutX="87.0" layoutY="184.0" opacity="0.25" prefHeight="26.0" prefWidth="117.0" text="Сложность" wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="previewRecipeTitleLabel1111" alignment="CENTER" layoutX="326.0" layoutY="184.0" opacity="0.25" prefHeight="26.0" prefWidth="81.0" text="баллов" wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <TextArea fx:id="recipeIngredients1" editable="false" layoutX="217.0" layoutY="245.0" prefHeight="144.0" prefWidth="678.0" styleClass="textarea" text="- ...&#10;- ...">
-                                       <font>
-                                          <Font name="Roboto Medium" size="20.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow blurType="GAUSSIAN" height="61.31" offsetY="10.0" radius="25.207500000000003" width="41.52">
-                                             <color>
-                                                <Color opacity="0.05000000074505806" />
-                                             </color>
-                                          </DropShadow>
-                                       </effect>
-                                    </TextArea>
-                                    <Label fx:id="previewRecipeTitleLabel1121" alignment="CENTER" layoutX="61.0" layoutY="245.0" opacity="0.25" prefHeight="26.0" prefWidth="144.0" text="Ингредиенты" wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <ImageView fx:id="recipeImage1" fitHeight="187.0" fitWidth="280.0" layoutX="615.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                       <image>
-                                          <Image url="@icons/image_placeholder.png" />
-                                       </image>
-                                       <effect>
-                                          <InnerShadow height="137.76" radius="33.94" width="0.0">
-                                             <color>
-                                                <Color opacity="0.2748091518878937" />
-                                             </color>
-                                          </InnerShadow>
-                                       </effect>
-                                    </ImageView>
-                                    <AnchorPane layoutX="196.0" layoutY="396.0">
-                                       <children>
-                                          <TextArea fx:id="recipeIngredients11" editable="false" layoutX="21.0" layoutY="16.0" prefHeight="176.0" prefWidth="431.0" styleClass="textarea" text="1.">
-                                             <font>
-                                                <Font name="Roboto Medium" size="20.0" />
-                                             </font>
-                                             <effect>
-                                                <DropShadow blurType="GAUSSIAN" height="61.31" offsetY="10.0" radius="25.207500000000003" width="41.52">
-                                                   <color>
-                                                      <Color opacity="0.05000000074505806" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
+          <Tab text="Make Recipe">
+              <content>
+                  <AnchorPane fx:id="makerecipePage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                          <ScrollPane hbarPolicy="NEVER" prefHeight="693.0" prefWidth="924.0" vmax="2.0">
+                              <content>
+                                  <AnchorPane fx:id="createRecipeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="1595.0" prefWidth="924.0" styleClass="recipestep">
+                                      <children>
+                                          <TextField fx:id="linkInput1" alignment="TOP_LEFT" layoutX="221.0" layoutY="58.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="382.0" styleClass="textinput" stylesheets="@style.css">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="19.0" />
+                                              </font>
+                                          </TextField>
+                                          <Label fx:id="previewRecipeTitleLabel1" alignment="CENTER" layoutX="90.0" layoutY="64.0" opacity="0.25" prefHeight="26.0" prefWidth="114.0" text="Название" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <TextField fx:id="linkInput11" alignment="TOP_LEFT" layoutX="220.0" layoutY="119.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="90.0" styleClass="textinput" stylesheets="@style.css">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="19.0" />
+                                              </font>
+                                          </TextField>
+                                          <Label fx:id="previewRecipeTitleLabel11" alignment="CENTER" layoutX="55.0" layoutY="125.0" opacity="0.25" prefHeight="26.0" prefWidth="150.0" text="Длительность" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <Label fx:id="previewRecipeTitleLabel111" alignment="CENTER" layoutX="326.0" layoutY="125.0" opacity="0.25" prefHeight="26.0" prefWidth="60.0" text="мин." wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <TextField fx:id="linkInput111" alignment="TOP_LEFT" layoutX="220.0" layoutY="178.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="90.0" styleClass="textinput" stylesheets="@style.css">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="19.0" />
+                                              </font>
+                                          </TextField>
+                                          <Label fx:id="previewRecipeTitleLabel112" alignment="CENTER" layoutX="87.0" layoutY="184.0" opacity="0.25" prefHeight="26.0" prefWidth="117.0" text="Сложность" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <Label fx:id="previewRecipeTitleLabel1111" alignment="CENTER" layoutX="326.0" layoutY="184.0" opacity="0.25" prefHeight="26.0" prefWidth="81.0" text="баллов" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <TextArea fx:id="recipeIngredients1" editable="false" layoutX="217.0" layoutY="245.0" prefHeight="144.0" prefWidth="678.0" styleClass="textarea" text="- ...&#10;- ...">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="20.0" />
+                                              </font>
+                                              <effect>
+                                                  <DropShadow blurType="GAUSSIAN" height="61.31" offsetY="10.0" radius="25.207500000000003" width="41.52">
+                                                      <color>
+                                                          <Color opacity="0.05000000074505806" />
+                                                      </color>
+                                                  </DropShadow>
+                                              </effect>
                                           </TextArea>
-                                          <ImageView fx:id="recipeImage11" fitHeight="156.0" fitWidth="231.0" layoutX="468.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                             <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                             </cursor>
-                                             <image>
-                                                <Image url="@icons/image_placeholder.png" />
-                                             </image>
-                                             <effect>
-                                                <InnerShadow height="137.76" radius="33.94" width="0.0">
-                                                   <color>
-                                                      <Color opacity="0.2748091518878937" />
-                                                   </color>
-                                                </InnerShadow>
-                                             </effect>
+                                          <Label fx:id="previewRecipeTitleLabel1121" alignment="CENTER" layoutX="61.0" layoutY="245.0" opacity="0.25" prefHeight="26.0" prefWidth="144.0" text="Ингредиенты" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <ImageView fx:id="recipeImage1" fitHeight="187.0" fitWidth="280.0" layoutX="615.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                              <cursor>
+                                                  <Cursor fx:constant="DEFAULT" />
+                                              </cursor>
+                                              <image>
+                                                  <Image url="@icons/image_placeholder.png" />
+                                              </image>
+                                              <effect>
+                                                  <InnerShadow height="137.76" radius="33.94" width="0.0">
+                                                      <color>
+                                                          <Color opacity="0.2748091518878937" />
+                                                      </color>
+                                                  </InnerShadow>
+                                              </effect>
                                           </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <Label fx:id="previewRecipeTitleLabel11211" alignment="CENTER" layoutX="61.0" layoutY="419.0" opacity="0.25" prefHeight="26.0" prefWidth="144.0" text="Шаги" wrapText="true">
-                                       <font>
-                                          <Font name="Roboto" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Button fx:id="addToCartButton1" alignment="CENTER" layoutX="740.0" layoutY="610.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" styleClass="regularbutton2" stylesheets="@style.css" text="Создать">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                       <font>
-                                          <Font name="Roboto Medium" size="20.0" />
-                                       </font>
-                                    </Button>
-                                    <Button layoutX="423.0" layoutY="607.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" styleClass="addbutton" stylesheets="@style.css" text="Button" />
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
-              </children>
-            </AnchorPane>
-          </content>
-        </Tab>
+                                          <Label fx:id="previewRecipeTitleLabel11211" alignment="CENTER" layoutX="61.0" layoutY="419.0" opacity="0.25" prefHeight="26.0" prefWidth="144.0" text="Шаги" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <Button fx:id="addToCartButton1" alignment="CENTER" layoutX="12.0" layoutY="540.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" styleClass="regularbutton2" stylesheets="@style.css" text="Создать">
+                                              <cursor>
+                                                  <Cursor fx:constant="HAND" />
+                                              </cursor>
+                                              <font>
+                                                  <Font name="Roboto Medium" size="20.0" />
+                                              </font>
+                                          </Button>
+                                          <Button fx:id="createNewStep" layoutX="58.0" layoutY="480.0" mnemonicParsing="false" onAction="#createNewStep" prefHeight="38.0" prefWidth="64.0" styleClass="addbutton" stylesheets="@style.css" text="Button" />
+                                          <VBox fx:id="recipeElementsVBox" layoutX="218.0" layoutY="404.0" prefHeight="315.0" prefWidth="678.0">
+                                              <children>
+                                                  <AnchorPane fx:id="stepAnchorPane" prefHeight="186.0" prefWidth="678.0" />
+                                              </children>
+                                          </VBox>
+                                      </children>
+                                  </AnchorPane>
+                              </content>
+                          </ScrollPane>
+                      </children>
+                  </AnchorPane>
+              </content>
+          </Tab>
             <Tab text="Import Recipe">
                <content>
                   <AnchorPane fx:id="importPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
