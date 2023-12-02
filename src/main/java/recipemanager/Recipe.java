@@ -11,8 +11,8 @@ public class Recipe {
     private String cuisine;
     private String difficulty;
     private String cookingTime;
-    private RecipeIngredients ingredients;
-    private RecipeSteps steps;
+    private final RecipeIngredients ingredients = new RecipeIngredients();
+    private final RecipeSteps steps = new RecipeSteps();
 
     public Recipe() {
         this.isFavourite = false;
