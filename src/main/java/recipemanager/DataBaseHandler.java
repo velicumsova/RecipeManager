@@ -1,17 +1,19 @@
 package recipemanager;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataBaseHandler {
     static Connection dbConnection;
 
-    public static Connection getDbConnection()  throws ClassNotFoundException, SQLException {
+    public static Connection getDbConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         dbConnection = DriverManager.getConnection("jdbc:sqlite:recipemanager.s3db");
         return dbConnection;
     }
 
-    public static void addRecipe(Recipe recipe){
+    public static void addRecipe(Recipe recipe) {
         String insertRecipe = "INSERT INTO recipes (isfav, title, category, imagepath, cuisine, difficulty, cookingtime) VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insertRecipe, Statement.RETURN_GENERATED_KEYS);
@@ -61,5 +63,27 @@ public class DataBaseHandler {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Произошла ошибка: " + e);
         }
+    }
+
+    public static List<RecipeSummary> getAllRecipes() {
+        List<RecipeSummary> recipeList = new ArrayList<>();
+        String selectRecipes = "SELECT id, title, imagepath FROM recipes";
+        try (Connection connection = getDbConnection();
+             PreparedStatement prSt = connection.prepareStatement(selectRecipes);
+             ResultSet resultSet = prSt.executeQuery()) {
+
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id");
+                String title = resultSet.getString("title");
+                String imagepath = resultSet.getString("imagepath");
+
+                recipeList.add(new RecipeSummary(id, title, imagepath));
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Произошла ошибка: " + e);
+        }
+        return recipeList;
+
     }
 }

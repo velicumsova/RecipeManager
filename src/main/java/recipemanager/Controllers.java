@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.List;
 
 
 public class Controllers {
@@ -343,6 +344,12 @@ public class Controllers {
         }
         else {
             DataBaseHandler.addRecipe(recipe);
+
+            List<RecipeSummary> recipes = DataBaseHandler.getAllRecipes();
+            for (RecipeSummary recipe_sum : recipes) {
+                System.out.println(recipe_sum.id + recipe_sum.title + recipe_sum.imagepath);
+            }
+
             this.openRecipe(recipe);
             this.pagesList.getSelectionModel().select(5);
         }
