@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: dcdcdc; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: dcdcdc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipemanager.Controllers">
+  <children>
+    <TabPane fx:id="pagesList" layoutX="100.0" layoutY="69.0" prefHeight="699.0" prefWidth="924.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab text="Recipe List">
+          <content>
+            <AnchorPane fx:id="recipelistPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label layoutX="176.0" layoutY="113.0" prefHeight="17.0" prefWidth="235.0" text="Label" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+          <Tab text="Make Recipe">
+              <content>
+                  <AnchorPane fx:id="makerecipePage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                          <ScrollPane hbarPolicy="NEVER" prefHeight="693.0" prefWidth="924.0" vmax="2.0">
+                              <content>
+                                  <AnchorPane fx:id="createRecipeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="1595.0" prefWidth="924.0" styleClass="recipestep">
+                                      <children>
+                                          <TextField fx:id="linkInput1" alignment="TOP_LEFT" layoutX="221.0" layoutY="58.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="382.0" styleClass="textinput" stylesheets="@style.css">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="19.0" />
+                                              </font>
+                                          </TextField>
+                                          <Label fx:id="previewRecipeTitleLabel1" alignment="CENTER" layoutX="90.0" layoutY="64.0" opacity="0.25" prefHeight="26.0" prefWidth="114.0" text="Название" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <TextField fx:id="linkInput11" alignment="TOP_LEFT" layoutX="220.0" layoutY="119.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="90.0" styleClass="textinput" stylesheets="@style.css">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="19.0" />
+                                              </font>
+                                          </TextField>
+                                          <Label fx:id="previewRecipeTitleLabel11" alignment="CENTER" layoutX="55.0" layoutY="125.0" opacity="0.25" prefHeight="26.0" prefWidth="150.0" text="Длительность" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <Label fx:id="previewRecipeTitleLabel111" alignment="CENTER" layoutX="326.0" layoutY="125.0" opacity="0.25" prefHeight="26.0" prefWidth="60.0" text="мин." wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <TextField fx:id="linkInput111" alignment="TOP_LEFT" layoutX="220.0" layoutY="178.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="90.0" styleClass="textinput" stylesheets="@style.css">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="19.0" />
+                                              </font>
+                                          </TextField>
+                                          <Label fx:id="previewRecipeTitleLabel112" alignment="CENTER" layoutX="87.0" layoutY="184.0" opacity="0.25" prefHeight="26.0" prefWidth="117.0" text="Сложность" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <Label fx:id="previewRecipeTitleLabel1111" alignment="CENTER" layoutX="326.0" layoutY="184.0" opacity="0.25" prefHeight="26.0" prefWidth="81.0" text="баллов" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <TextArea fx:id="recipeIngredients1" editable="false" layoutX="217.0" layoutY="245.0" prefHeight="144.0" prefWidth="678.0" styleClass="textarea" text="- ...&#10;- ...">
+                                              <font>
+                                                  <Font name="Roboto Medium" size="20.0" />
+                                              </font>
+                                              <effect>
+                                                  <DropShadow blurType="GAUSSIAN" height="61.31" offsetY="10.0" radius="25.207500000000003" width="41.52">
+                                                      <color>
+                                                          <Color opacity="0.05000000074505806" />
+                                                      </color>
+                                                  </DropShadow>
+                                              </effect>
+                                          </TextArea>
+                                          <Label fx:id="previewRecipeTitleLabel1121" alignment="CENTER" layoutX="61.0" layoutY="245.0" opacity="0.25" prefHeight="26.0" prefWidth="144.0" text="Ингредиенты" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <ImageView fx:id="recipeImage1" fitHeight="187.0" fitWidth="280.0" layoutX="615.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                              <cursor>
+                                                  <Cursor fx:constant="DEFAULT" />
+                                              </cursor>
+                                              <image>
+                                                  <Image url="@icons/image_placeholder.png" />
+                                              </image>
+                                              <effect>
+                                                  <InnerShadow height="137.76" radius="33.94" width="0.0">
+                                                      <color>
+                                                          <Color opacity="0.2748091518878937" />
+                                                      </color>
+                                                  </InnerShadow>
+                                              </effect>
+                                          </ImageView>
+                                          <Label fx:id="previewRecipeTitleLabel11211" alignment="CENTER" layoutX="61.0" layoutY="419.0" opacity="0.25" prefHeight="26.0" prefWidth="144.0" text="Шаги" wrapText="true">
+                                              <font>
+                                                  <Font name="Roboto" size="21.0" />
+                                              </font>
+                                          </Label>
+                                          <Button fx:id="addToCartButton1" alignment="CENTER" layoutX="12.0" layoutY="540.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" styleClass="regularbutton2" stylesheets="@style.css" text="Создать">
+                                              <cursor>
+                                                  <Cursor fx:constant="HAND" />
+                                              </cursor>
+                                              <font>
+                                                  <Font name="Roboto Medium" size="20.0" />
+                                              </font>
+                                          </Button>
+                                          <Button fx:id="createNewStep" layoutX="58.0" layoutY="480.0" mnemonicParsing="false" onAction="#createNewStep" prefHeight="38.0" prefWidth="64.0" styleClass="addbutton" stylesheets="@style.css" text="Button" />
+                                          <VBox fx:id="recipeElementsVBox" layoutX="218.0" layoutY="404.0" prefHeight="315.0" prefWidth="678.0">
+                                              <children>
+                                                  <AnchorPane fx:id="stepAnchorPane" prefHeight="186.0" prefWidth="678.0" />
+                                              </children>
+                                          </VBox>
+                                      </children>
+                                  </AnchorPane>
+                              </content>
+                          </ScrollPane>
+                      </children>
+                  </AnchorPane>
+              </content>
+          </Tab>
+            <Tab text="Import Recipe">
+               <content>
+                  <AnchorPane fx:id="importPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutX="86.0" layoutY="134.0" prefHeight="415.0" prefWidth="752.0" styleClass="plane">
+                           <effect>
+                              <DropShadow height="37.5" radius="27.625" width="75.0">
+                                 <color>
+                                    <Color opacity="0.05000000074505806" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <children>
+                              <Button fx:id="importButton" alignment="CENTER" layoutX="277.0" layoutY="312.0" mnemonicParsing="false" onAction="#onImportClick" prefHeight="32.0" prefWidth="200.0" styleClass="regularbutton" stylesheets="@style.css" text="Импортировать">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Roboto Medium" size="20.0" />
+                                 </font>
+                              </Button>
+                               <TextField fx:id="linkInput" alignment="CENTER" layoutX="127.0" layoutY="254.0" onInputMethodTextChanged="#onLinkInput" prefHeight="38.0" prefWidth="500.0" promptText="Вставьте ссылку" styleClass="textinput" stylesheets="@style.css">
+                                 <font>
+                                    <Font name="Roboto Medium" size="19.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="90.0" fitWidth="531.0" layoutX="111.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/koolinar_logo.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                              <Label fx:id="previewRecipeTitleLabel" alignment="CENTER" layoutX="127.0" layoutY="215.0" opacity="0.25" prefHeight="25.0" prefWidth="502.0" text="Импортируйте рецепт с сайта koolinar.ru" wrapText="true">
+                                 <font>
+                                    <Font name="Roboto" size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Favourites List">
+               <content>
+                  <AnchorPane fx:id="favPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="423.0" layoutY="326.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Cart">
+               <content>
+                  <AnchorPane fx:id="cartPage1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="924.0">
+                     <children>
+                        <Label layoutX="423.0" layoutY="326.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Recipe">
+               <content>
+                  <AnchorPane fx:id="cartPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fx:id="recipeMainScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="-10.0" prefHeight="693.0" prefWidth="924.0" vmax="2.0">
+                          <content>
+                            <AnchorPane fx:id="recipeMainPane" minHeight="0.0" minWidth="0.0" prefHeight="1164.0" prefWidth="924.0">
+                                 <children>
+                                    <Label layoutX="17.0" layoutY="465.0" prefHeight="29.0" prefWidth="867.0" text="Ингредиенты" textFill="#a8a8a8">
+                                       <font>
+                                          <Font name="Roboto" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane layoutX="17.0" layoutY="135.0" prefHeight="286.0" prefWidth="875.0" styleClass="plane">
+                                       <children>
+                                          <Label fx:id="recipeCuisine" layoutX="59.0" layoutY="69.0" prefHeight="31.0" prefWidth="376.0" text="Кухня" textFill="#656565">
+                                             <font>
+                                                <Font name="Roboto Medium" size="26.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="recipeCookingTime" layoutX="58.0" layoutY="236.0" opacity="0.6" prefHeight="29.0" prefWidth="377.0" text="Время" textFill="#656565">
+                                             <font>
+                                                <Font name="Roboto" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="recipeDifficulty" layoutX="58.0" layoutY="191.0" opacity="0.6" prefHeight="29.0" prefWidth="377.0" text="Сложность" textFill="#656565">
+                                             <font>
+                                                <Font name="Roboto" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="13.0" layoutY="232.0" mnemonicParsing="false" opacity="0.3" prefHeight="36.0" prefWidth="36.0" styleClass="time" stylesheets="@style.css" text="2">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Button>
+                                          <Button layoutX="13.0" layoutY="187.0" mnemonicParsing="false" opacity="0.3" prefHeight="36.0" prefWidth="36.0" styleClass="difficulty" stylesheets="@style.css" text="2">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Button>
+                                          <Button layoutX="13.0" layoutY="65.0" mnemonicParsing="false" opacity="0.44" prefHeight="36.0" prefWidth="36.0" styleClass="cuisine" stylesheets="@style.css" text="2">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Button>
+                                          <Button layoutX="13.0" layoutY="141.0" mnemonicParsing="false" opacity="0.3" prefHeight="36.0" prefWidth="36.0" styleClass="bju" stylesheets="@style.css" text="2">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Button>
+                                          <Label fx:id="recipeBJU" layoutX="58.0" layoutY="145.0" opacity="0.6" prefHeight="29.0" prefWidth="378.0" text="БЖУ" textFill="#656565">
+                                             <font>
+                                                <Font name="Roboto" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="recipeCategory" layoutX="58.0" layoutY="18.0" prefHeight="31.0" prefWidth="377.0" text="Категория" textFill="#656565">
+                                             <font>
+                                                <Font name="Roboto Medium" size="26.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" opacity="0.44" prefHeight="36.0" prefWidth="36.0" styleClass="category" stylesheets="@style.css" text="2">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Button>
+                                          <ImageView fx:id="recipeImage" fitHeight="258.0" fitWidth="396.0" layoutX="474.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                             <image>
+                                                <Image url="@icons/image_placeholder.png" />
+                                             </image>
+                                             <effect>
+                                                <InnerShadow height="137.76" radius="33.94" width="0.0">
+                                                   <color>
+                                                      <Color opacity="0.2748091518878937" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </ImageView>
+                                          <Line endX="307.0" layoutX="132.0" layoutY="124.0" startX="-100.0" stroke="#d3d3d3" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
+                                          <Button fx:id="favButton" layoutX="429.0" layoutY="19.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <DropShadow>
+                                                   <color>
+                                                      <Color opacity="0.2748091518878937" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                          </Button>
+                                       </children>
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="47.02" offsetY="10.0" radius="21.512500000000003" width="41.03">
+                                             <color>
+                                                <Color opacity="0.05000000074505806" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </AnchorPane>
+                                    <Button fx:id="addToCartButton" alignment="CENTER" layoutX="740.0" layoutY="456.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="150.0" styleClass="regularbutton2" stylesheets="@style.css" text="В корзину">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="Roboto Medium" size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Label fx:id="recipeStepsLabel" layoutX="17.0" layoutY="566.0" prefHeight="29.0" prefWidth="864.0" text="Пошаговый рецепт приготовления" textFill="#a8a8a8">
+                                       <font>
+                                          <Font name="Roboto" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recipeTitle" alignment="CENTER" layoutX="30.0" layoutY="29.0" prefHeight="90.0" prefWidth="842.0" text="Название рецепта" textAlignment="CENTER" textFill="#5b5b5b" wrapText="true">
+                                       <font>
+                                          <Font name="Roboto Black" size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane fx:id="recipeStepsPane" layoutX="17.0" layoutY="601.0" prefHeight="34.0" prefWidth="875.0" styleClass="plane" />
+                                    <AnchorPane fx:id="recipeIngredientsPane" layoutX="17.0" layoutY="505.0" prefHeight="34.0" prefWidth="875.0" styleClass="plane" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+      </tabs>
+    </TabPane>
+    <AnchorPane prefHeight="768.0" prefWidth="100.0" styleClass="anchorplane">
+      <effect>
+        <DropShadow height="0.0" radius="18.25" width="75.0">
+          <color>
+            <Color opacity="0.10000000149011612" />
+          </color>
+        </DropShadow>
+      </effect>
+      <children>
+        <Button fx:id="recipeListPageButton" layoutX="25.0" layoutY="131.0" mnemonicParsing="false" onAction="#onRecipeListPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="recipelist" stylesheets="@style.css" text="1">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor></Button>
+        <Button fx:id="makeRecipePageButton" layoutX="25.0" layoutY="218.0" mnemonicParsing="false" onAction="#onMakeRecipePageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="edit" stylesheets="@style.css" text="2">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor></Button>
+        <Button fx:id="favPageButton" layoutX="25.0" layoutY="692.0" mnemonicParsing="false" onAction="#onFavPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="favlist" stylesheets="@style.css" text="3">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor></Button>
+        <Button fx:id="importRecipePageButton" layoutX="25.0" layoutY="305.0" mnemonicParsing="false" onAction="#onImportRecipePageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="import" stylesheets="@style.css" text="2">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor>
+        </Button>
+      </children>
+    </AnchorPane>
+    <AnchorPane prefHeight="100.0" prefWidth="1024.0" styleClass="anchorplane" stylesheets="@style.css">
+      <effect>
+        <DropShadow height="75.0" radius="18.25" width="0.0">
+          <color>
+            <Color opacity="0.10000000149011612" />
+          </color>
+        </DropShadow>
+      </effect>
+      <children>
+        <Label layoutX="98.0" layoutY="12.0" text="Recipe" textFill="#ff9933">
+          <font>
+            <Font name="Roboto Bold" size="65.0" />
+          </font>
+        </Label>
+        <Label layoutX="310.0" layoutY="36.0" text="manager" textFill="#ff9933">
+          <font>
+            <Font name="Roboto" size="38.0" />
+          </font>
+        </Label>
+        <Button fx:id="cartPageButton" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCartPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" stylesheets="@style.css" text="4">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor></Button>
+        <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@icons/logo.png" />
+          </image>
+        </ImageView>
+        <Label fx:id="pageName" layoutX="471.0" layoutY="52.0" opacity="0.25" text="Список рецептов">
+          <font>
+            <Font name="Roboto" size="21.0" />
+          </font>
+        </Label>
+      </children>
+    </AnchorPane>
+    <Button fx:id="selectionButton" layoutX="-35.0" layoutY="130.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="selection" stylesheets="@style.css" text="1">
+      <cursor>
+        <Cursor fx:constant="DEFAULT" />
+      </cursor>
+    </Button>
+  </children>
+</AnchorPane>
