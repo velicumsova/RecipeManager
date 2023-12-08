@@ -1,8 +1,8 @@
-package recipemanager;
+package recipemanager.recipe;
 import java.util.List;
 
 public class RecipeIngredients {
-    private List<String> ingredients;
+    public List<String> ingredients;
 
     // SETTER
     public void setIngredients(List<String> ingredients) {

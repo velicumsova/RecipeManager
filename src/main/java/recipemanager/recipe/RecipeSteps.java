@@ -1,4 +1,4 @@
-package recipemanager;
+package recipemanager.recipe;
 import java.util.List;
 
 public class RecipeSteps {
@@ -6,18 +6,18 @@ public class RecipeSteps {
     private List<String> stepImagePaths;
 
     // SETTERS
-    public void setSteps(List<String> steps) {
+    public void setDescriptions(List<String> steps) {
         this.steps = steps;
     }
-    public void setStepImagePaths(List<String> stepImagePaths) {
+    public void setImagePaths(List<String> stepImagePaths) {
         this.stepImagePaths = stepImagePaths;
     }
 
     // GETTERS
-    public List<String> getSteps() {
+    public List<String> getDescriptions() {
         return this.steps;
     }
-    public List<String> getStepImagePaths() {
+    public List<String> getImagePaths() {
         return this.stepImagePaths;
     }
 }

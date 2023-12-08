@@ -1,8 +1,10 @@
-package recipemanager;
+package recipemanager.recipe;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
+import recipemanager.dataprocessing.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,17 +57,16 @@ public class RecipeParser {
 
         Elements ingredients = doc.select(".ingredient");
         if (!ingredients.isEmpty()) {
-            recipe.setIngredients(ingredients.eachText());
+            RecipeIngredients recipeIngredients = new RecipeIngredients();
+            recipeIngredients.setIngredients(ingredients.eachText());
+            recipe.setIngredients(recipeIngredients);
         }
 
         Elements steps = doc.select(".b-step");
-        if (!steps.isEmpty()) {
-            recipe.setSteps(steps.eachText());
-        } else {
+        RecipeSteps recipeSteps = new RecipeSteps();
+
+        if (steps.isEmpty()) {
             steps = doc.select(".instruction");
-            if (!steps.isEmpty()) {
-                recipe.setSteps(steps.eachText());
-            }
         }
 
         Elements imageElements = doc.select(".b-step__img img");
@@ -79,8 +80,22 @@ public class RecipeParser {
             String imageURL = imageElement.attr("src");
             imageURLS.add("https://www.koolinar.ru" + imageURL);
         }
-        recipe.setStepImagePaths(imageURLS);
 
+        int difference = steps.size() - imageURLS.size();
+        if (difference > 0){
+            for (int i = 0; i < difference; i++) {
+                imageURLS.add("data/icons/image_placeholder.png");
+            }
+        } else if (difference < 0) {
+            for (int i = 0; i < difference * (-1); i++) {
+                steps.add(new Element(Tag.valueOf("div"), "").text("Шаг не указан"));
+            }
+        }
+
+        recipeSteps.setDescriptions(steps.eachText());
+        recipeSteps.setImagePaths(imageURLS);
+        recipe.setSteps(recipeSteps);
+        DatabaseHandler.addRecipe(recipe);
         return recipe;
     }
 }

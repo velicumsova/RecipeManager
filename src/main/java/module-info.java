@@ -9,4 +9,10 @@ module recipemanager.recipemanager {
 
     opens recipemanager to javafx.fxml;
     exports recipemanager;
+    exports recipemanager.controllers;
+    opens recipemanager.controllers to javafx.fxml;
+    exports recipemanager.recipe;
+    opens recipemanager.recipe to javafx.fxml;
+    exports recipemanager.dataprocessing;
+    opens recipemanager.dataprocessing to javafx.fxml;
 }
