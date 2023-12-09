@@ -1,7 +1,5 @@
 package recipemanager.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -14,13 +12,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import recipemanager.MainApplication;
 import recipemanager.dataprocessing.DatabaseHandler;
-import recipemanager.recipe.Recipe;
-import recipemanager.recipe.RecipeIngredients;
-import recipemanager.recipe.RecipeParser;
-import recipemanager.recipe.RecipeSummary;
+import recipemanager.recipe.*;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainControllers {
 
@@ -59,7 +57,74 @@ public class MainControllers {
         this.pagesList.getSelectionModel().select(0);
         List<RecipeSummary> recipes = DatabaseHandler.getAllRecipeSummaries();
         loadRecipeList(recipes);
+
+        int i = 0;
+        List<String> difficulties = Arrays.asList("Простой", "Средний", "Сложный", "Не определен");
+        for (String difficulty : difficulties) {
+            CheckBox difficultyBox = new CheckBox(difficulty);
+            difficultyBox.setSelected(true);
+            difficultyBox.setStyle("checkbox");
+            difficultyBox.setLayoutX(10);
+            difficultyBox.setLayoutY(i * 25 + 40);
+
+            difficultyBox.setOnAction(event -> {
+                if (difficultyBox.isSelected()) {
+                    selectedDifficulties.add(difficulty);
+                } else {
+                    selectedDifficulties.remove(difficulty);
+                }
+            });
+
+            selectedDifficulties.add(difficulty);
+            difficultyList.getChildren().add(difficultyBox);
+            i++;
+        }
+
+        i = 0;
+        List<String> cuisines = DatabaseHandler.getAllCuisines();
+        for (String cuisine : cuisines) {
+            CheckBox cuisineBox = new CheckBox(cuisine);
+            cuisineBox.setSelected(true);
+            cuisineBox.setStyle("checkbox");
+            cuisineBox.setLayoutY(i * 25);
+
+            cuisineBox.setOnAction(event -> {
+                if (cuisineBox.isSelected()) {
+                    selectedCuisines.add(cuisine);
+                } else {
+                    selectedCuisines.remove(cuisine);
+                }
+            });
+
+            selectedCuisines.add(cuisine);
+            cuisineList.getChildren().add(cuisineBox);
+            i++;
+        }
+        cuisineList.setMinHeight(i * 25);
+
+        List<String> categories = DatabaseHandler.getAllCategories();
+        i = 0;
+        for (String category : categories) {
+            CheckBox categoryBox = new CheckBox(category);
+            categoryBox.setSelected(true);
+            categoryBox.setStyle("checkbox");
+            categoryBox.setLayoutY(i * 25);
+
+            categoryBox.setOnAction(event -> {
+                if (categoryBox.isSelected()) {
+                    selectedCategories.add(category);
+                } else {
+                    selectedCategories.remove(category);
+                }
+            });
+
+            selectedCategories.add(category);
+            categoryList.getChildren().add(categoryBox);
+            i++;
+        }
+        categoryList.setMinHeight(i * 25);
     }
+
     // RECIPE PAGE
     // --------------------------
     @FXML
@@ -139,52 +204,34 @@ public class MainControllers {
         // Отображение каждого шага
         recipeStepsPane.getChildren().clear();
         double yPositionSteps = 25;
-        if (!recipe.getSteps().getImagePaths().isEmpty()) {
-            for (String url : recipe.getSteps().getImagePaths()) {
-                ImageView imageView;
-                imageView = new ImageView(new Image(url));
+        int i = 0;
+        for (String url : recipe.getSteps().getImagePaths()) {
+            ImageView imageView;
+            imageView = new ImageView(new Image(url));
 
-                imageView.setFitWidth(200);
-                imageView.setLayoutX(10);
-                imageView.setPreserveRatio(true);
-                Label stepLabel = new Label("· " + recipe.getSteps().getDescriptions().get(recipe.getSteps().getImagePaths().indexOf(url)));
-                stepLabel.setStyle("{" +
-                        "    -fx-font-family: 'Roboto Medium';" +
-                        "    -fx-font-size: 20px;" +
-                        "    -fx-text-fill: #656565;" +
-                        "    -fx-max-width: 645;" +
-                        "    -fx-ellipses-string: \"...\";" +
-                        "    -fx-wrap-text: true;" +
-                        "}");
+            imageView.setFitWidth(200);
+            imageView.setLayoutX(10);
+            imageView.setPreserveRatio(true);
+            Label stepLabel = new Label(recipe.getSteps().getDescriptions().get(i));
+            stepLabel.setStyle("{" +
+                    "    -fx-font-family: 'Roboto Medium';" +
+                    "    -fx-font-size: 20px;" +
+                    "    -fx-text-fill: #656565;" +
+                    "    -fx-max-width: 645;" +
+                    "    -fx-ellipses-string: \"...\";" +
+                    "    -fx-wrap-text: true;" +
+                    "}");
 
-                HBox stepBox = new HBox(10, imageView, stepLabel);
-                AnchorPane.setTopAnchor(stepBox, yPositionSteps);
-                AnchorPane.setLeftAnchor(stepBox, 25.0);
-                recipeStepsPane.getChildren().add(stepBox);
-                if (stepLabel.getText().length() / 38 > 4) {
-                    yPositionSteps += 25 + imageView.getBoundsInLocal().getHeight() + stepLabel.getText().length() / 2.75;
-                } else {
-                    yPositionSteps += 25 + imageView.getBoundsInLocal().getHeight();
-              }
-            }
-        } else {
-            for (String step : recipe.getSteps().getDescriptions()) {
-                Label stepLabel = new Label("· " + step);
-                stepLabel.setStyle("{" +
-                        "    -fx-font-family: 'Roboto Medium';" +
-                        "    -fx-font-size: 20px;" +
-                        "    -fx-text-fill: #656565;" +
-                        "    -fx-max-width: 825;" +
-                        "    -fx-ellipses-string: \"...\";" +
-                        "    -fx-wrap-text: true;" +
-                        "}");
-
-                HBox stepBox = new HBox(10, stepLabel);
-                AnchorPane.setTopAnchor(stepBox, yPositionSteps);
-                AnchorPane.setLeftAnchor(stepBox, 25.0);
-                recipeStepsPane.getChildren().add(stepBox);
-                yPositionSteps += 50 + (stepLabel.getText().length() - 1) / 2.0;
-            }
+            HBox stepBox = new HBox(10, imageView, stepLabel);
+            AnchorPane.setTopAnchor(stepBox, yPositionSteps);
+            AnchorPane.setLeftAnchor(stepBox, 25.0);
+            recipeStepsPane.getChildren().add(stepBox);
+            if (stepLabel.getText().length() / 38 > 4) {
+                yPositionSteps += 25 + imageView.getBoundsInLocal().getHeight() + stepLabel.getText().length() / 2.75;
+            } else {
+                yPositionSteps += 25 + imageView.getBoundsInLocal().getHeight();
+          }
+            i++;
         }
         recipeStepsPane.setMinHeight(yPositionSteps);
         recipeStepsPane.setPrefHeight(yPositionSteps);
@@ -200,48 +247,46 @@ public class MainControllers {
     @FXML
     private ComboBox<String> sortingBox;
     @FXML
-    private ComboBox<String> filterDifficulty;
+    private AnchorPane difficultyList;
     @FXML
-    private ComboBox<String> filterCategory;
+    private AnchorPane cuisineList;
     @FXML
-    private ComboBox<String> filterCuisine;
-    @FXML
-    private ComboBox<String> filterIngredients;
+    private AnchorPane categoryList;
 
     private ColumnConstraints newColumn() {
         ColumnConstraints columnConstraints = new ColumnConstraints();
-        columnConstraints.setPrefWidth(288);
+        columnConstraints.setPrefWidth(326);
         return columnConstraints;
     }
 
     private Pane newRecipePreviewPane(RecipeSummary recipe_sum) {
         Pane pane = new Pane();
         pane.getStyleClass().add("recipeplane");
-        Recipe recipe =  DatabaseHandler.getRecipeByRecipeId(recipe_sum.id);
+        Recipe recipe = DatabaseHandler.getRecipeByRecipeId(recipe_sum.id);
         pane.setOnMouseClicked(event -> openRecipe(recipe));
 
         Label title = new Label(recipe_sum.title);
-        title.setLayoutX(15);
+        title.setLayoutX(28);  // Уменьшено значение layoutX
         title.setLayoutY(15);
         title.getStyleClass().add("recipePreviewTitle");
-        title.setPrefWidth(288);
+        title.setPrefWidth(326);
         title.setAlignment(Pos.CENTER);
 
         Label category_cuisine = new Label(recipe_sum.category + " - " + recipe_sum.cuisine);
-        category_cuisine.setLayoutX(15);
+        category_cuisine.setLayoutX(28);  // Уменьшено значение layoutX
         category_cuisine.setLayoutY(215);
         category_cuisine.getStyleClass().add("recipePreviewCuisineCategory");
-        category_cuisine.setPrefWidth(288);
+        category_cuisine.setPrefWidth(326);
         category_cuisine.setAlignment(Pos.CENTER);
 
         Label time = new Label(recipe_sum.cookingTime);
-        time.setLayoutX(50);
+        time.setLayoutX(63);  // Уменьшено значение layoutX
         time.setLayoutY(255);
         time.getStyleClass().add("recipePreviewDifficultyTime");
-        time.setPrefWidth(288);
+        time.setPrefWidth(326);
 
         Button timeIcon = new Button();
-        timeIcon.setLayoutX(5);
+        timeIcon.setLayoutX(18);  // Уменьшено значение layoutX
         timeIcon.setLayoutY(245);
         timeIcon.getStyleClass().add("time");
         timeIcon.setOpacity(0.3);
@@ -249,13 +294,13 @@ public class MainControllers {
         timeIcon.setPrefHeight(45);
 
         Label difficulty = new Label(recipe_sum.difficulty);
-        difficulty.setLayoutX(194);
+        difficulty.setLayoutX(207);  // Уменьшено значение layoutX
         difficulty.setLayoutY(255);
         difficulty.getStyleClass().add("recipePreviewDifficultyTime");
         difficulty.setPrefWidth(288);
 
         Button difficultyIcon = new Button();
-        difficultyIcon.setLayoutX(149);
+        difficultyIcon.setLayoutX(162);  // Уменьшено значение layoutX
         difficultyIcon.setLayoutY(245);
         difficultyIcon.getStyleClass().add("difficulty");
         difficultyIcon.setOpacity(0.3);
@@ -263,15 +308,15 @@ public class MainControllers {
         difficultyIcon.setPrefHeight(45);
 
         ImageView imagePreview;
-        imagePreview = new ImageView(new Image(recipe_sum.imagepath));
-        imagePreview.setFitWidth(258);
-        imagePreview.setLayoutX(15);
+        imagePreview  = new ImageView(new Image(recipe_sum.imagepath));
+        imagePreview.setFitWidth(271);  // Уменьшено значение FitWidth
+        imagePreview.setLayoutX(28);  // Уменьшено значение layoutX
         imagePreview.setLayoutY(50);
         imagePreview.setPreserveRatio(true);
-        Rectangle clip = new Rectangle(258, 165);
+        Rectangle clip = new Rectangle(271, 165);  // Уменьшено значение dimensions
         clip.setArcWidth(25);
         clip.setArcHeight(25);
-        Rectangle bclip = new Rectangle(288, 190);
+        Rectangle bclip = new Rectangle(301, 190);  // Уменьшено значение dimensions
         bclip.setArcWidth(25);
         bclip.setArcHeight(25);
         imagePreview.setClip(clip);
@@ -280,14 +325,14 @@ public class MainControllers {
             imagePreview.setClip(bclip);
             imagePreview.setTranslateX(-15);
             imagePreview.setTranslateY(-15);
-            imagePreview.setFitWidth(288);
+            imagePreview.setFitWidth(339);  // Уменьшено значение FitWidth
         });
 
         imagePreview.setOnMouseExited(e -> {
             imagePreview.setClip(clip);
             imagePreview.setTranslateX(0);
             imagePreview.setTranslateY(0);
-            imagePreview.setFitWidth(258);
+            imagePreview.setFitWidth(271);  // Уменьшено значение FitWidth
         });
 
         pane.getChildren().add(title);
@@ -300,38 +345,72 @@ public class MainControllers {
         return pane;
     }
 
+    Set<String> selectedDifficulties = new HashSet<>();
+    Set<String> selectedCuisines = new HashSet<>();
+    Set<String> selectedCategories = new HashSet<>();
     private void loadRecipeList(List<RecipeSummary> recipes) {
-        sortingBox.setValue("По умолчанию");
-        ObservableList<String> items = FXCollections.observableArrayList("По умолчанию", "По названию", "По сложности", "По БЖУ", "По ингредиентам", "По времени готовки", "По кухне", "По категории");
-        sortingBox.setItems(items);
-        this.selectButton(this.recipeListPageButton, "recipelist-active", -35.0, 130.0);
-        this.pageName.setText("Список рецептов");
-        this.pagesList.getSelectionModel().select(0);
-
         recipeListGrid.getChildren().clear();
         recipeListGrid.getColumnConstraints().clear();
         recipeListGrid.getRowConstraints().clear();
-        recipeListGrid.setHgap(10);
-        recipeListGrid.setVgap(10);
+        recipeListGrid.setHgap(15);
+        recipeListGrid.setVgap(15);
 
-        int rows = recipes.size() / 3;
-        recipeListGrid.setMinHeight(rows * 300 + 75);
-        recipeListGrid.getColumnConstraints().addAll(newColumn(), newColumn(), newColumn());
+        int rows = (int) Math.ceil((double) recipes.size() / 2);
+        recipeListGrid.setMinHeight(rows * 300 + 300);
+        recipeListGrid.getColumnConstraints().addAll(newColumn(), newColumn());
 
         for (int row = 0; row < rows; row++) {
             RowConstraints rowConstraints = new RowConstraints();
             rowConstraints.setMinHeight(300);
 
-            for (int col = 0; col < 3; col++) {
-                Pane pane = newRecipePreviewPane(recipes.get(row + col));
-                recipeListGrid.add(pane, col, row);
+            for (int col = 0; col < 2; col++) {
+                try {
+                    Pane pane = newRecipePreviewPane(recipes.get(row * 2 + col));
+                    recipeListGrid.add(pane, col, row);
+                } catch (IndexOutOfBoundsException ignored) {
+                }
             }
             recipeListGrid.getRowConstraints().add(rowConstraints);
         }
     }
+
     public void onRecipeListPageClick(ActionEvent event) {
+        this.selectButton(this.recipeListPageButton, "recipelist-active", -35.0, 130.0);
+        this.pageName.setText("Список рецептов");
+        this.pagesList.getSelectionModel().select(0);
+
         List<RecipeSummary> recipes = DatabaseHandler.getAllRecipeSummaries();
         loadRecipeList(recipes);
+    }
+
+    public void sortRecipes(ActionEvent event) {
+        List<RecipeSummary> recipes = DatabaseHandler.getAllRecipeSummaries();
+        recipes = RecipeFilter.filterRecipesByDifficulty(recipes, selectedDifficulties);
+        recipes = RecipeFilter.filterRecipesByCuisine(recipes, selectedCuisines);
+        recipes = RecipeFilter.filterRecipesByCategory(recipes, selectedCategories);
+        String selectedOption = sortingBox.getValue();
+        switch (selectedOption) {
+            case "По умолчанию":
+                loadRecipeList(recipes);
+                break;
+            case "По названию":
+                loadRecipeList(RecipeSorter.sortByName(recipes));
+                break;
+            case "По сложности":
+                loadRecipeList(RecipeSorter.sortByDifficulty(recipes));
+                break;
+            case "По времени готовки":
+                loadRecipeList(RecipeSorter.sortByCookingTime(recipes));
+                break;
+            case "По кухне":
+                loadRecipeList(RecipeSorter.sortByCuisine(recipes));
+                break;
+            case "По категории":
+                loadRecipeList(RecipeSorter.sortByCategory(recipes));
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -400,7 +479,7 @@ public class MainControllers {
         imageView.setFitHeight(170);
 
         // Установка изображения-заглушки
-        Image placeholderImage = new Image(getClass().getResourceAsStream("/recipemanager/data/icons/image_placeholder.png"));
+        Image placeholderImage = new Image(String.valueOf(MainApplication.class.getResource("/data/icons/image_placeholder.png")));
         imageView.setImage(placeholderImage);
 
         // Обработчик нажатия на изображение для загрузки нового изображения

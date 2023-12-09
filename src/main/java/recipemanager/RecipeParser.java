@@ -1,11 +1,8 @@
-package recipemanager.recipe;
+package recipemanager;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
-import recipemanager.MainApplication;
-import recipemanager.dataprocessing.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,16 +55,17 @@ public class RecipeParser {
 
         Elements ingredients = doc.select(".ingredient");
         if (!ingredients.isEmpty()) {
-            RecipeIngredients recipeIngredients = new RecipeIngredients();
-            recipeIngredients.setIngredients(ingredients.eachText());
-            recipe.setIngredients(recipeIngredients);
+            recipe.setIngredients(ingredients.eachText());
         }
 
         Elements steps = doc.select(".b-step");
-        RecipeSteps recipeSteps = new RecipeSteps();
-
-        if (steps.isEmpty()) {
+        if (!steps.isEmpty()) {
+            recipe.setSteps(steps.eachText());
+        } else {
             steps = doc.select(".instruction");
+            if (!steps.isEmpty()) {
+                recipe.setSteps(steps.eachText());
+            }
         }
 
         Elements imageElements = doc.select(".b-step__img img");
@@ -81,22 +79,8 @@ public class RecipeParser {
             String imageURL = imageElement.attr("src");
             imageURLS.add("https://www.koolinar.ru" + imageURL);
         }
+        recipe.setStepImagePaths(imageURLS);
 
-        int difference = steps.size() - imageURLS.size();
-        if (difference > 0){
-            for (int i = 0; i < difference; i++) {
-                imageURLS.add(String.valueOf(MainApplication.class.getResource("/data/icons/image_placeholder.png")));
-            }
-        } else if (difference < 0) {
-            for (int i = 0; i < difference * (-1); i++) {
-                steps.add(new Element(Tag.valueOf("div"), "").text("Шаг не указан"));
-            }
-        }
-
-        recipeSteps.setDescriptions(steps.eachText());
-        recipeSteps.setImagePaths(imageURLS);
-        recipe.setSteps(recipeSteps);
-        DatabaseHandler.addRecipe(recipe);
         return recipe;
     }
 }

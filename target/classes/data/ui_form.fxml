@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -30,9 +32,75 @@
           <content>
             <AnchorPane fx:id="recipelistPage" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane layoutX="14.0" layoutY="94.0" prefHeight="588.0" prefWidth="910.0">
+                        <ScrollPane layoutX="7.0" layoutY="19.0" prefHeight="597.0" prefWidth="218.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="885.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane prefHeight="100.0" prefWidth="200.0" styleClass="plane">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="124.0" text="Сортировка" textFill="#636363b0">
+                                             <font>
+                                                <Font name="Roboto Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="sortingBox" layoutX="10.0" layoutY="50.0" prefHeight="25.0" prefWidth="171.0" promptText="По умолчанию">
+                                           <items>
+                                               <FXCollections fx:factory="observableArrayList">
+                                                   <String fx:value="По умолчанию" />
+                                                   <String fx:value="По названию" />
+                                                   <String fx:value="По сложности" />
+                                                   <String fx:value="По времени готовки" />
+                                                   <String fx:value="По кухне" />
+                                                   <String fx:value="По категории" />
+                                               </FXCollections>
+                                           </items>
+                                          </ComboBox>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="difficultyList" layoutY="110.0" prefHeight="150.0" prefWidth="200.0" styleClass="plane">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="124.0" text="Сложность" textFill="#636363b0">
+                                             <font>
+                                                <Font name="Roboto Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="270.0" prefHeight="300.0" prefWidth="200.0" styleClass="plane">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="124.0" text="Кухня" textFill="#636363b0">
+                                             <font>
+                                                <Font name="Roboto Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ScrollPane layoutX="10.0" layoutY="40.0" prefHeight="250.0" prefWidth="190.0">
+                                            <content>
+                                              <AnchorPane fx:id="cuisineList" minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="175.0" />
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="580.0" prefHeight="300.0" prefWidth="200.0" styleClass="plane">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="124.0" text="Категория" textFill="#636363b0">
+                                             <font>
+                                                <Font name="Roboto Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ScrollPane layoutX="10.0" layoutY="40.0" prefHeight="250.0" prefWidth="190.0">
+                                            <content>
+                                              <AnchorPane fx:id="categoryList" minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="175.0" />
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <ScrollPane layoutX="230.0" layoutY="16.0" prefHeight="666.0" prefWidth="694.0">
                            <content>
-                              <GridPane fx:id="recipeListGrid" prefHeight="589.0" prefWidth="899.0">
+                              <GridPane fx:id="recipeListGrid" prefHeight="658.0" prefWidth="698.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -43,22 +111,14 @@
                               </GridPane>
                            </content>
                         </ScrollPane>
-                        <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0" text="Сортировать" textFill="#636363b0">
+                        <Button fx:id="sortButton" alignment="CENTER" layoutX="47.0" layoutY="625.0" mnemonicParsing="false" onAction="#sortRecipes" prefHeight="25.0" prefWidth="119.0" styleClass="regularbutton" stylesheets="@style.css" text="Применить">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <font>
-                              <Font name="Roboto Medium" size="14.0" />
+                              <Font name="Roboto Medium" size="16.0" />
                            </font>
-                        </Label>
-                        <ComboBox fx:id="sortingBox" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="150.0" promptText="По умолчанию" />
-                        <Line endX="437.0" layoutX="462.0" layoutY="94.0" opacity="0.15" startX="-446.0" />
-                        <Label layoutX="271.0" layoutY="18.0" prefHeight="25.0" prefWidth="120.0" text="Фильтровать" textFill="#636363b0">
-                           <font>
-                              <Font name="Roboto Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="filterDifficulty" layoutX="271.0" layoutY="49.0" prefHeight="25.0" prefWidth="150.0" promptText="Сложность" />
-                        <ComboBox fx:id="filterCategory" layoutX="433.0" layoutY="49.0" prefHeight="25.0" prefWidth="150.0" promptText="Категория" />
-                        <ComboBox fx:id="filterCuisine" layoutX="595.0" layoutY="49.0" prefHeight="25.0" prefWidth="150.0" promptText="Кухня" />
-                        <ComboBox fx:id="filterIngredients" layoutX="757.0" layoutY="49.0" prefHeight="25.0" prefWidth="143.0" promptText="Ингредиенты" />
+                        </Button>
                      </children>
             </AnchorPane>
           </content>
@@ -314,18 +374,6 @@
                                              </effect>
                                           </ImageView>
                                           <Line endX="307.0" layoutX="132.0" layoutY="124.0" startX="-100.0" stroke="#d3d3d3" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
-                                          <Button fx:id="favButton" layoutX="429.0" layoutY="19.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <effect>
-                                                <DropShadow>
-                                                   <color>
-                                                      <Color opacity="0.2748091518878937" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                          </Button>
                                        </children>
                                        <effect>
                                           <DropShadow blurType="GAUSSIAN" height="47.02" offsetY="10.0" radius="21.512500000000003" width="41.03">
@@ -355,6 +403,21 @@
                                     </Label>
                                     <AnchorPane fx:id="recipeStepsPane" layoutX="17.0" layoutY="601.0" prefHeight="34.0" prefWidth="875.0" styleClass="plane" />
                                     <AnchorPane fx:id="recipeIngredientsPane" layoutX="17.0" layoutY="505.0" prefHeight="34.0" prefWidth="875.0" styleClass="plane" />
+                                    <Button fx:id="favButton" layoutX="16.0" layoutY="81.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button fx:id="favButton1" layoutX="854.0" layoutY="81.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button fx:id="favButton11" layoutX="797.0" layoutY="81.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="favbutton" stylesheets="@style.css" text="В избранное">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                           </content>
@@ -415,7 +478,8 @@
         <Button fx:id="cartPageButton" layoutX="952.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCartPageClick" opacity="0.32" prefHeight="50.0" prefWidth="50.0" styleClass="cart" stylesheets="@style.css" text="4">
           <cursor>
             <Cursor fx:constant="HAND" />
-          </cursor></Button>
+          </cursor>
+            </Button>
         <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@icons/logo.png" />

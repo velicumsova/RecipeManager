@@ -1,5 +1,6 @@
 package recipemanager.dataprocessing;
 
+import recipemanager.MainApplication;
 import recipemanager.recipe.Recipe;
 import recipemanager.recipe.RecipeIngredients;
 import recipemanager.recipe.RecipeSteps;
@@ -127,6 +128,74 @@ public class DatabaseHandler {
         return recipeList;
     }
 
+    public static List<String> getAllDifficulties() {
+        List<String> difficultyList = new ArrayList<>();
+        String selectCuisines = "SELECT DISTINCT difficulty FROM recipes";
+        try (Connection connection = getDbConnection();
+             PreparedStatement prSt = connection.prepareStatement(selectCuisines);
+             ResultSet resultSet = prSt.executeQuery()) {
+
+            while (resultSet.next()) {
+                String difficulty = resultSet.getString("cuisine");
+                difficultyList.add(difficulty);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Произошла ошибка: " + e);
+        }
+        return difficultyList;
+    }
+    public static List<String> getAllCuisines() {
+        List<String> cuisineList = new ArrayList<>();
+        String selectCuisines = "SELECT DISTINCT cuisine FROM recipes";
+        try (Connection connection = getDbConnection();
+             PreparedStatement prSt = connection.prepareStatement(selectCuisines);
+             ResultSet resultSet = prSt.executeQuery()) {
+
+            while (resultSet.next()) {
+                String cuisine = resultSet.getString("cuisine");
+                cuisineList.add(cuisine);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Произошла ошибка: " + e);
+        }
+        return cuisineList;
+    }
+    public static List<String> getAllCategories() {
+        List<String> cuisineList = new ArrayList<>();
+        String selectCuisines = "SELECT DISTINCT category FROM recipes";
+        try (Connection connection = getDbConnection();
+             PreparedStatement prSt = connection.prepareStatement(selectCuisines);
+             ResultSet resultSet = prSt.executeQuery()) {
+
+            while (resultSet.next()) {
+                String cuisine = resultSet.getString("category");
+                cuisineList.add(cuisine);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Произошла ошибка: " + e);
+        }
+        return cuisineList;
+    }
+    public static List<String> getAllIngredients() {
+        List<String> cuisineList = new ArrayList<>();
+        String selectCuisines = "SELECT DISTINCT ingredient FROM ingredients";
+        try (Connection connection = getDbConnection();
+             PreparedStatement prSt = connection.prepareStatement(selectCuisines);
+             ResultSet resultSet = prSt.executeQuery()) {
+
+            while (resultSet.next()) {
+                String cuisine = resultSet.getString("ingredient");
+                cuisineList.add(cuisine);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Произошла ошибка: " + e);
+        }
+        return cuisineList;
+    }
     public static Recipe getRecipeByRecipeId(int recipeId) {
         Recipe recipe = null;
         String selectRecipe = "SELECT * FROM recipes WHERE id = ?";
