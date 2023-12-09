@@ -203,6 +203,7 @@
 
 .button.time {
     -fx-background-image: url("icons/time.png");
+    -fx-background-size: 45px 45px;
 }
 
 .button.difficulty {
@@ -238,3 +239,40 @@
 .button.addbutton {
     -fx-background-image: url("icons/plus.png");
 }
+
+.recipeplane {
+    -fx-background-color: #eeeeee;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #c9c9c9;
+}
+.recipeplane:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #ece9e3;
+    -fx-border-color: #ff9933;
+}
+.recipePreviewTitle {
+    -fx-text-fill: #656565;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-font-weight: 700;
+    -fx-max-width: 250px;
+    -fx-wrap-text: false;
+}
+.recipePreviewCuisineCategory {
+    -fx-text-fill: #656565b9;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
+    -fx-max-width: 250px;
+    -fx-wrap-text: false;
+}
+.recipePreviewDifficultyTime {
+    -fx-text-fill: #656565b9;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-font-weight: 700;
+    -fx-max-width: 100px;
+    -fx-wrap-text: false;
+}
+

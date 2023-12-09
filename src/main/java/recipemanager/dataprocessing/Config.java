@@ -1,4 +1,4 @@
-package recipemanager;
+package recipemanager.dataprocessing;
 
 public class Config {
     protected String dbHost = "localhost";
